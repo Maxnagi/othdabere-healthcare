@@ -1,4 +1,5 @@
 "use client"
+
 import ScrollReveal from "./ScrollReveal"
 
 const steps = [

@@ -15,6 +15,7 @@ const badges = ["CQC Registered","DBS Checked Staff","24/7 Support","Personalise
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
 
+  /* Parallax on scroll */
   useEffect(() => {
     const onScroll = () => {
       const el = heroRef.current?.querySelector<HTMLElement>(".hero-bg")
@@ -27,14 +28,16 @@ export default function Hero() {
   return (
     <section ref={heroRef} style={{ position:"relative", minHeight:"100vh", display:"flex", alignItems:"center", overflow:"hidden" }}>
 
+      {/* BG with parallax */}
       <div className="hero-bg" style={{ position:"absolute", inset:"-15% 0 0 0", backgroundImage:"url('/images/hero-home.jpg')", backgroundSize:"cover", backgroundPosition:"center", willChange:"transform" }} />
       <div className="hero-overlay" style={{ position:"absolute", inset:0 }} />
 
-      {/* Animated orbs — hidden on mobile via pointer-events:none already, visually fine */}
+      {/* Animated colour orbs */}
       <div style={{ position:"absolute", top:"8%", right:"12%", width:340, height:340, borderRadius:"50%", background:"radial-gradient(circle, rgba(13,148,136,0.18) 0%, transparent 70%)", animation:"float 6s ease-in-out infinite", pointerEvents:"none" }} />
       <div style={{ position:"absolute", bottom:"20%", left:"6%", width:220, height:220, borderRadius:"50%", background:"radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)", animation:"float 8s ease-in-out infinite 2s", pointerEvents:"none" }} />
       <div style={{ position:"absolute", top:"40%", right:"4%", width:180, height:180, borderRadius:"50%", border:"1px solid rgba(56,189,248,0.2)", animation:"float 5s ease-in-out infinite 1s", pointerEvents:"none" }} />
 
+      {/* Content */}
       <div className="container" style={{ position:"relative", zIndex:1, paddingTop:80, paddingBottom:60, width:"100%" }}>
         <div style={{ maxWidth:780 }}>
 
@@ -47,7 +50,7 @@ export default function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="anim-fade-up delay-100" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.2rem,6vw,5rem)", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
+          <h1 className="anim-fade-up delay-100" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.6rem,6vw,5rem)", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
             Compassionate Care{" "}
             <span style={{ background:"linear-gradient(135deg,#38BDF8,#2DD4BF,#10B981)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
               in the Comfort
@@ -56,17 +59,17 @@ export default function Hero() {
           </h1>
 
           {/* Subtext */}
-          <p className="anim-fade-up delay-200" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:36, maxWidth:600 }}>
+          <p className="anim-fade-up delay-200" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(1rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:36, maxWidth:600 }}>
             Othdabere H.Q. Healthcare Services provides professional domiciliary care designed to support individuals to live independently with dignity, safety, and comfort.
           </p>
 
           {/* CTAs */}
           <div className="anim-fade-up delay-300" style={{ display:"flex", flexWrap:"wrap", gap:12, marginBottom:44 }}>
-            <Link href="/contact" className="btn-primary" style={{ fontSize:"1rem", padding:"16px 32px" }}>
+            <Link href="/contact" className="btn-primary" style={{ textDecoration:"none", fontSize:"1rem", padding:"16px 32px" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               Get Care Today
             </Link>
-            <Link href="/services" className="btn-secondary" style={{ fontSize:"1rem", padding:"15px 32px" }}>
+            <Link href="/services" className="btn-secondary" style={{ textDecoration:"none", fontSize:"1rem", padding:"15px 32px" }}>
               Explore Services
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </Link>
@@ -83,8 +86,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stat cards — use CSS class for responsive columns */}
-        <div className="anim-fade-up delay-500 hero-stat-grid" style={{ display:"grid", gap:14, marginTop:56, maxWidth:700 }}>
+        {/* Stat cards */}
+        <div className="anim-fade-up delay-500 hero-stat-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:14, marginTop:56, maxWidth:700 }}>
           {statCards.map((s,i) => (
             <div key={i} style={{ background:"rgba(255,255,255,0.09)", border:"1px solid rgba(255,255,255,0.14)", backdropFilter:"blur(12px)", borderRadius:16, padding:"18px 14px", textAlign:"center", transition:"transform 0.3s, background 0.3s" }}
               onMouseEnter={e=>{ (e.currentTarget as HTMLDivElement).style.background="rgba(255,255,255,0.16)"; (e.currentTarget as HTMLDivElement).style.transform="translateY(-4px)" }}
