@@ -9,7 +9,7 @@ process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export default async function BlogPage(){
 
-const { data:posts } = await supabase
+const { data: posts } = await supabase
 .from("blog_posts")
 .select("*")
 .order("created_at",{ascending:false})
