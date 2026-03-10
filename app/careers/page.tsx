@@ -2,36 +2,33 @@
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import ScrollReveal from "@/components/ScrollReveal"
 import { supabase } from "@/lib/supabaseClient"
 import { useState } from "react"
 
 const perks = [
-  { iconClass: "icon-bg-teal", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: "DBS Sponsored", desc: "We fully sponsor your DBS check as part of joining our team." },
-  { iconClass: "icon-bg-blue", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: "Ongoing Training", desc: "Access to regular training courses and career development opportunities." },
-  { iconClass: "icon-bg-green", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.8"/><polyline points="12,6 12,12 16,14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: "Flexible Hours", desc: "Full-time, part-time and flexible shifts to suit your lifestyle." },
-  { iconClass: "icon-bg-orange", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, title: "Supportive Team", desc: "Join a warm, inclusive team that values every member's contribution." },
+  { icon:"💼", title:"Competitive Pay",        desc:"Excellent rates with guaranteed hours",      grad:"linear-gradient(135deg,#10B981,#14B8A6)" },
+  { icon:"🎓", title:"Funded Training",         desc:"All training paid for — grow your career",  grad:"linear-gradient(135deg,#3B82F6,#6366F1)" },
+  { icon:"🕐", title:"Flexible Hours",          desc:"Full-time, part-time and bank shifts",       grad:"linear-gradient(135deg,#F97316,#F59E0B)" },
+  { icon:"🤝", title:"Supportive Team",         desc:"A positive, inclusive working environment",  grad:"linear-gradient(135deg,#F43F5E,#EC4899)" },
+  { icon:"📋", title:"DBS Covered",             desc:"We cover the cost of your DBS check",        grad:"linear-gradient(135deg,#8B5CF6,#A855F7)" },
+  { icon:"🏅", title:"Recognition & Rewards",   desc:"Staff appreciation and awards programme",    grad:"linear-gradient(135deg,#F59E0B,#F97316)" },
 ]
 
 export default function Careers() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [message, setMessage] = useState("")
-  const [file, setFile] = useState<any>(null)
-  const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState(false)
+  const [name,setName]=useState(""); const [email,setEmail]=useState(""); const [phone,setPhone]=useState("")
+  const [message,setMessage]=useState(""); const [file,setFile]=useState<any>(null)
+  const [loading,setLoading]=useState(false); const [sent,setSent]=useState(false)
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault(); setLoading(true)
     let cvUrl = ""
     if (file) {
       const { data } = await supabase.storage.from("cv").upload(`applications/${Date.now()}-${file.name}`, file)
       if (data) cvUrl = data.path
     }
     await supabase.from("job_applications").insert([{ name, email, phone, message, cv: cvUrl }])
-    setLoading(false)
-    setSent(true)
+    setLoading(false); setSent(true)
     setName(""); setEmail(""); setPhone(""); setMessage("")
   }
 
@@ -39,96 +36,85 @@ export default function Careers() {
     <>
       <Navbar />
 
-      {/* HERO */}
-      <section style={{
-        position: "relative", padding: "120px 0 100px",
-        backgroundImage: "url('/images/hero-careers.jpg')",
-        backgroundSize: "cover", backgroundPosition: "center",
-      }}>
-        <div className="hero-overlay-light" style={{ position: "absolute", inset: 0 }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
-          <span className="section-label" style={{ marginBottom: 20, display: "inline-flex", background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>
-            Join Our Team
-          </span>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "white", lineHeight: 1.1, marginTop: 16, marginBottom: 16, maxWidth: 600 }}>
-            Build a Career in Compassionate Care
-          </h1>
-          <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "rgba(255,255,255,0.75)", fontSize: "1.1rem", maxWidth: 540, lineHeight: 1.7 }}>
-            Join our team of dedicated caregivers and make a real difference in people's lives every day.
-          </p>
-          <div style={{ width: 60, height: 4, background: "linear-gradient(90deg, #38BDF8, #2DD4BF)", borderRadius: 2, marginTop: 20 }} />
+      {/* Hero */}
+      <section className="page-hero" style={{ position: "relative", padding: "110px 0 80px", backgroundImage: "url('/images/hero-careers.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="hero-overlay" style={{ position: "absolute", inset: 0 }} />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <ScrollReveal>
+            <span className="section-label" style={{ marginBottom: 20, background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>👩‍⚕️ Join Our Team</span>
+            <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2.4rem,6vw,4.5rem)", fontWeight: 700, color: "white", lineHeight: 1.08, marginTop: 20, marginBottom: 20 }}>
+              Build a Career in <span className="text-shimmer">Compassionate Care</span>
+            </h1>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,0.78)", fontSize: "1.1rem", maxWidth: 520, lineHeight: 1.72 }}>
+              Join a team that makes a real difference every day. We invest in our people because great care starts with great carers.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* PERKS */}
-      <section style={{ padding: "80px 0", background: "white" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>Why Work With Us</h2>
+      {/* Perks */}
+      <section className="section-pad" style={{ background: "white" }}>
+        <div className="container">
+          <ScrollReveal style={{ textAlign: "center", marginBottom: 52 }}>
+            <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>🌟 Why Work With Us</span>
+            <h2 className="sec-h2" style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>Benefits & Perks</h2>
             <div className="divider-teal" style={{ margin: "0 auto" }} />
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
+          </ScrollReveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: 20 }}>
             {perks.map((p, i) => (
-              <div key={i} className="card-lift" style={{ background: "#F8FAFD", border: "1.5px solid #E2E8F0", borderRadius: 20, padding: "28px", display: "flex", gap: 16, alignItems: "flex-start" }}>
-                <div className={p.iconClass} style={{ width: 48, height: 48, borderRadius: 14, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>{p.icon}</div>
-                <div>
-                  <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#0B2545", fontSize: "0.97rem", marginBottom: 6 }}>{p.title}</h4>
-                  <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.85rem", lineHeight: 1.6, margin: 0 }}>{p.desc}</p>
+              <ScrollReveal key={i} delay={i * 70}>
+                <div className="card-lift" style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 18, padding: "28px", display: "flex", gap: 18, alignItems: "flex-start" }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: p.grad, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem", flexShrink: 0, boxShadow: "0 6px 18px rgba(0,0,0,0.10)" }}>{p.icon}</div>
+                  <div>
+                    <h4 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, color: "#0B2545", fontSize: "0.95rem", marginBottom: 6 }}>{p.title}</h4>
+                    <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#64748B", fontSize: "0.85rem", lineHeight: 1.6, margin: 0 }}>{p.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FORM */}
-      <section style={{ padding: "80px 0", background: "#F8FAFD" }}>
-        <div style={{ maxWidth: 680, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 24, padding: "48px" }}>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "#0B2545", marginBottom: 8 }}>Apply Now</h2>
-            <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.9rem", marginBottom: 32 }}>We'd love to hear from you. Complete the form below to apply.</p>
+      {/* Application form */}
+      <section className="section-pad" style={{ background: "#F8FAFD" }}>
+        <div className="container">
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <ScrollReveal style={{ textAlign: "center", marginBottom: 48 }}>
+              <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>📝 Apply Now</span>
+              <h2 className="sec-h2" style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2rem,4vw,2.8rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>Start Your Application</h2>
+              <div className="divider-teal" style={{ margin: "0 auto" }} />
+            </ScrollReveal>
 
             {sent ? (
-              <div style={{ background: "#DCFCE7", border: "1.5px solid #22C55E", borderRadius: 16, padding: "28px", textAlign: "center" }}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 12px", display: "block" }}><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#16A34A", fontSize: "1.2rem", marginBottom: 8 }}>Application Received!</h4>
-                <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#15803D", fontSize: "0.95rem" }}>Thank you for applying. We'll review your application and be in touch soon.</p>
-              </div>
+              <ScrollReveal>
+                <div style={{ background: "linear-gradient(135deg,#F0FDF4,#DCFCE7)", border: "1.5px solid rgba(22,163,74,0.3)", borderRadius: 20, padding: "48px", textAlign: "center" }}>
+                  <div style={{ fontSize: "3rem", marginBottom: 16 }}>🎉</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "2rem", fontWeight: 700, color: "#166534", marginBottom: 12 }}>Application Received!</h3>
+                  <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#15803D", fontSize: "0.97rem", lineHeight: 1.7, marginBottom: 24 }}>Thank you for applying. Our team will review your application and be in touch within 3–5 business days.</p>
+                  <button onClick={() => setSent(false)} style={{ background: "linear-gradient(135deg,#16A34A,#22C55E)", color: "white", border: "none", padding: "13px 30px", borderRadius: 50, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, cursor: "pointer", fontSize: "0.95rem" }}>Submit Another</button>
+                </div>
+              </ScrollReveal>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                <div>
-                  <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Full Name</label>
-                  <input type="text" placeholder="Your full name" value={name} onChange={e => setName(e.target.value)} className="input-modern" required />
+              <ScrollReveal>
+                <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 24, padding: "40px" }}>
+                  <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                    <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+                      <input className="input-modern" placeholder="Full Name *" value={name} onChange={e => setName(e.target.value)} required />
+                      <input className="input-modern" type="email" placeholder="Email Address *" value={email} onChange={e => setEmail(e.target.value)} required />
+                    </div>
+                    <input className="input-modern" type="tel" placeholder="Phone Number *" value={phone} onChange={e => setPhone(e.target.value)} required />
+                    <textarea className="input-modern" placeholder="Tell us about yourself — experience, motivation, skills..." value={message} onChange={e => setMessage(e.target.value)} rows={5} style={{ resize: "vertical" }} />
+                    <div style={{ border: "1.5px dashed #CBD5E1", borderRadius: 12, padding: "20px", background: "#F8FAFD", textAlign: "center" }}>
+                      <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.85rem", color: "#64748B", marginBottom: 12 }}>📎 Upload your CV (PDF or Word)</p>
+                      <input type="file" accept=".pdf,.doc,.docx" onChange={e => setFile(e.target.files?.[0])} style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.85rem" }} />
+                    </div>
+                    <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
+                      {loading ? "⏳ Submitting..." : "🚀 Submit Application"}
+                    </button>
+                  </form>
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                  <div>
-                    <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Email</label>
-                    <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} className="input-modern" required />
-                  </div>
-                  <div>
-                    <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Phone</label>
-                    <input type="text" placeholder="+44 ..." value={phone} onChange={e => setPhone(e.target.value)} className="input-modern" required />
-                  </div>
-                </div>
-                <div>
-                  <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Tell Us About Yourself</label>
-                  <textarea placeholder="Your experience, why you'd like to join..." value={message} onChange={e => setMessage(e.target.value)} className="input-modern" style={{ height: 120, resize: "vertical" as any }} />
-                </div>
-                <div>
-                  <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Upload CV (optional)</label>
-                  <div style={{ border: "1.5px dashed #CBD5E1", borderRadius: 10, padding: "20px", textAlign: "center", cursor: "pointer", position: "relative", background: "#F8FAFD" }}>
-                    <input type="file" onChange={e => setFile(e.target.files?.[0])} style={{ position: "absolute", inset: 0, opacity: 0, cursor: "pointer" }} />
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 8px", display: "block" }}><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="#64748B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "0.85rem", color: "#64748B", margin: 0 }}>
-                      {file ? file.name : "Click to upload or drag & drop your CV"}
-                    </p>
-                  </div>
-                </div>
-                <button type="submit" className="btn-primary" style={{ justifyContent: "center", padding: "16px", fontSize: "1rem" }}>
-                  {loading ? "Submitting..." : "Submit Application"}
-                  {!loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
-                </button>
-              </form>
+              </ScrollReveal>
             )}
           </div>
         </div>

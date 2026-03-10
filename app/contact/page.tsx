@@ -2,12 +2,14 @@
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import ScrollReveal from "@/components/ScrollReveal"
 import { supabase } from "@/lib/supabaseClient"
 import { useState } from "react"
 
 export default function Contact() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
@@ -15,111 +17,112 @@ export default function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setLoading(true)
-    await supabase.from("contact_messages").insert([{ name, email, message }])
+    await supabase.from("contact_messages").insert([{ name, email, phone, message }])
     setLoading(false)
     setSent(true)
-    setName(""); setEmail(""); setMessage("")
+    setName(""); setEmail(""); setPhone(""); setMessage("")
   }
+
+  const contactInfo = [
+    { icon:"📞", label:"Phone",    val:"+44 7588 160799",                 href:"tel:+447588160799",                    grad:"linear-gradient(135deg,#10B981,#14B8A6)" },
+    { icon:"📧", label:"Email",    val:"othdaberehealthcare@gmail.com",   href:"mailto:othdaberehealthcare@gmail.com", grad:"linear-gradient(135deg,#3B82F6,#6366F1)" },
+    { icon:"📍", label:"Location", val:"United Kingdom & Ghana",          href:"#",                                   grad:"linear-gradient(135deg,#F43F5E,#EC4899)" },
+    { icon:"🕐", label:"Hours",    val:"Mon–Sun: 8am – 8pm",              href:"#",                                   grad:"linear-gradient(135deg,#F97316,#F59E0B)" },
+  ]
 
   return (
     <>
       <Navbar />
 
-      {/* HERO */}
-      <section style={{
-        position: "relative", padding: "120px 0 100px",
-        backgroundImage: "url('/images/hero-contact.jpg')",
-        backgroundSize: "cover", backgroundPosition: "center",
-      }}>
-        <div className="hero-overlay-light" style={{ position: "absolute", inset: 0 }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
-          <span className="section-label" style={{ marginBottom: 20, display: "inline-flex", background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>
-            Get In Touch
-          </span>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "white", lineHeight: 1.1, marginTop: 16, marginBottom: 16, maxWidth: 600 }}>
-            We're Here to Help You
-          </h1>
-          <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "rgba(255,255,255,0.75)", fontSize: "1.1rem", maxWidth: 500, lineHeight: 1.7 }}>
-            Contact our team to learn more about our healthcare and domiciliary care services.
-          </p>
-          <div style={{ width: 60, height: 4, background: "linear-gradient(90deg, #38BDF8, #2DD4BF)", borderRadius: 2, marginTop: 20 }} />
+      {/* Hero */}
+      <section className="page-hero" style={{ position: "relative", padding: "110px 0 80px", backgroundImage: "url('/images/hero-contact.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="hero-overlay" style={{ position: "absolute", inset: 0 }} />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <ScrollReveal>
+            <span className="section-label" style={{ marginBottom: 20, background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>📞 Get In Touch</span>
+            <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2.4rem,6vw,4.5rem)", fontWeight: 700, color: "white", lineHeight: 1.08, marginTop: 20, marginBottom: 20 }}>
+              Contact <span className="text-shimmer">Our Team</span>
+            </h1>
+            <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,0.78)", fontSize: "1.1rem", maxWidth: 520, lineHeight: 1.72 }}>
+              We are here to support you. Reach out to discuss care options, ask questions or arrange a consultation.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* MAIN */}
-      <section style={{ padding: "100px 0", background: "white" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 60 }}>
+      {/* Contact info cards */}
+      <section style={{ background: "white", padding: "60px 0 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 18, transform: "translateY(0)" }}>
+            {contactInfo.map((c, i) => (
+              <ScrollReveal key={i} delay={i * 70}>
+                <a href={c.href} style={{
+                  display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+                  padding: "28px 20px", borderRadius: 18, textDecoration: "none",
+                  background: "white", border: "1.5px solid #E2E8F0",
+                  transition: "transform 0.3s,box-shadow 0.3s", cursor: "pointer",
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-6px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 16px 40px rgba(11,37,69,0.10)" }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = "none"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none" }}
+                >
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: c.grad, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem", marginBottom: 14, boxShadow: "0 6px 20px rgba(0,0,0,0.10)" }}>{c.icon}</div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.78rem", color: "#0D9488", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>{c.label}</div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#334155", fontSize: "0.88rem", fontWeight: 500 }}>{c.val}</div>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Info */}
-            <div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.2rem", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>Contact Information</h2>
-              <div className="divider-teal" style={{ marginBottom: 28 }} />
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "1rem", lineHeight: 1.7, marginBottom: 36 }}>
-                If you have any questions about our services or need care support, please contact us. We're happy to help.
-              </p>
+      {/* Form + info */}
+      <section className="section-pad" style={{ background: "white" }}>
+        <div className="container">
+          <div className="grid-2" style={{ gap: 56 }}>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {[
-                  { iconClass: "icon-bg-teal", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, label: "Phone", value: "+44 7588 160799" },
-                  { iconClass: "icon-bg-blue", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, label: "Email", value: "othdaberehealthcare@gmail.com" },
-                  { iconClass: "icon-bg-green", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>, label: "Location", value: "United Kingdom & Ghana" },
-                ].map((c, i) => (
-                  <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                    <div className={c.iconClass} style={{ width: 48, height: 48, borderRadius: 14, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      {c.icon}
-                    </div>
-                    <div>
-                      <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.82rem", color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 2 }}>{c.label}</div>
-                      <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "1rem", color: "#0B2545" }}>{c.value}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Map */}
-              <div style={{ marginTop: 40, borderRadius: 16, overflow: "hidden", border: "1.5px solid #E2E8F0" }}>
-                <iframe
-                  style={{ width: "100%", height: 260, display: "block", border: "none" }}
-                  src="https://www.google.com/maps?q=London&output=embed"
-                  title="Service areas"
-                />
-              </div>
-            </div>
-
-            {/* Form */}
-            <div style={{ background: "#F8FAFD", border: "1.5px solid #E2E8F0", borderRadius: 24, padding: "40px" }}>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 700, color: "#0B2545", marginBottom: 8 }}>Send Us a Message</h3>
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.9rem", marginBottom: 32 }}>We'll get back to you within 24 hours.</p>
+            <ScrollReveal direction="left">
+              <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2rem,4vw,2.6rem)", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>Send Us a Message</h2>
+              <div className="divider-teal" style={{ marginBottom: 32 }} />
 
               {sent ? (
-                <div style={{ background: "#DCFCE7", border: "1.5px solid #22C55E", borderRadius: 16, padding: "24px", textAlign: "center" }}>
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ margin: "0 auto 12px", display: "block" }}><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <h4 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#16A34A", fontSize: "1.1rem", marginBottom: 8 }}>Message Sent!</h4>
-                  <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#15803D", fontSize: "0.9rem" }}>Thank you for reaching out. We'll be in touch soon.</p>
-                  <button onClick={() => setSent(false)} style={{ marginTop: 16, background: "none", border: "none", color: "#16A34A", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, cursor: "pointer", textDecoration: "underline" }}>Send another message</button>
+                <div style={{ background: "linear-gradient(135deg,#F0FDF4,#DCFCE7)", border: "1.5px solid rgba(22,163,74,0.3)", borderRadius: 18, padding: "40px", textAlign: "center" }}>
+                  <div style={{ fontSize: "3rem", marginBottom: 16 }}>✅</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "1.8rem", fontWeight: 700, color: "#166534", marginBottom: 10 }}>Message Sent!</h3>
+                  <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#15803D", fontSize: "0.95rem", lineHeight: 1.7, marginBottom: 24 }}>Thank you for reaching out. Our team will be in touch within 1 business day.</p>
+                  <button onClick={() => setSent(false)} style={{ background: "linear-gradient(135deg,#16A34A,#22C55E)", color: "white", border: "none", padding: "12px 28px", borderRadius: 50, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, cursor: "pointer" }}>Send Another</button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                  <div>
-                    <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Full Name</label>
-                    <input type="text" placeholder="Your full name" value={name} onChange={e => setName(e.target.value)} className="input-modern" required />
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                    <input className="input-modern" placeholder="Full Name *" value={name} onChange={e => setName(e.target.value)} required />
+                    <input className="input-modern" type="email" placeholder="Email Address *" value={email} onChange={e => setEmail(e.target.value)} required />
                   </div>
-                  <div>
-                    <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Email Address</label>
-                    <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} className="input-modern" required />
-                  </div>
-                  <div>
-                    <label style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "#334155", display: "block", marginBottom: 6 }}>Message</label>
-                    <textarea placeholder="How can we help you?" value={message} onChange={e => setMessage(e.target.value)} className="input-modern" style={{ height: 140, resize: "vertical" as any }} required />
-                  </div>
-                  <button type="submit" className="btn-primary" style={{ justifyContent: "center", padding: "16px", fontSize: "1rem" }}>
-                    {loading ? "Sending..." : "Send Message"}
-                    {!loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  <input className="input-modern" type="tel" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
+                  <textarea className="input-modern" placeholder="Your Message *" value={message} onChange={e => setMessage(e.target.value)} required rows={5} style={{ resize: "vertical" }} />
+                  <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
+                    {loading ? "⏳ Sending..." : "📤 Send Message"}
                   </button>
                 </form>
               )}
-            </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right">
+              <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(2rem,4vw,2.6rem)", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>We'd Love to Help</h2>
+              <div className="divider-teal" style={{ marginBottom: 24 }} />
+              <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "#334155", fontSize: "0.95rem", lineHeight: 1.78, marginBottom: 32 }}>
+                Whether you need to arrange care for yourself or a loved one, have a question about our services, or would like to refer someone — our friendly team is always happy to talk.
+              </p>
+              <div style={{ borderRadius: 18, overflow: "hidden", border: "1.5px solid #E2E8F0" }}>
+                <iframe
+                  title="Othdabere Healthcare service area map"
+                  style={{ width: "100%", height: 300, display: "block", border: "none" }}
+                  src="https://www.google.com/maps?q=London,UK&output=embed"
+                />
+              </div>
+              <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.82rem", color: "#94A3B8", marginTop: 10, textAlign: "center" }}>
+                📍 Serving clients across the United Kingdom & Ghana
+              </p>
+            </ScrollReveal>
           </div>
         </div>
       </section>
