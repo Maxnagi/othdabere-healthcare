@@ -1,72 +1,92 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { supabase } from "@/lib/supabaseClient"
+import AdminSidebar from "@/components/admin/AdminSidebar"
 
 export default function Admin(){
 
-const [messages,setMessages] = useState<any[]>([])
+const router = useRouter()
 
 useEffect(()=>{
-
-fetchMessages()
-
+checkUser()
 },[])
 
-async function fetchMessages(){
+async function checkUser(){
 
-const { data } = await supabase
-.from("contact_messages")
-.select("*")
-.order("created_at",{ascending:false})
+const { data } = await supabase.auth.getUser()
 
-setMessages(data || [])
+if(!data.user){
+router.push("/login")
+}
+
+}
+
+const logout = async ()=>{
+
+await supabase.auth.signOut()
+router.push("/login")
 
 }
 
 return(
 
-<div className="p-10">
+<div className="flex">
 
-<h1 className="text-3xl font-bold mb-10">
+<AdminSidebar/>
+
+<div className="p-10 flex-1">
+
+<div className="flex justify-between mb-10">
+
+<h1 className="text-3xl font-bold">
 Admin Dashboard
 </h1>
 
-<h2 className="text-xl font-semibold mb-4">
-Contact Messages
-</h2>
+<button
+onClick={logout}
+className="bg-red-500 text-white px-4 py-2 rounded"
+>
+Logout
+</button>
 
-<table className="w-full border">
+</div>
 
-<thead>
+<div className="grid md:grid-cols-4 gap-6">
 
-<tr className="bg-gray-100">
+<Link href="/admin/contacts">
+<div className="p-6 shadow rounded hover:shadow-lg cursor-pointer transition">
+<h2 className="text-xl font-bold">Contacts</h2>
+<p>View contact messages</p>
+</div>
+</Link>
 
-<th className="p-3 border">Name</th>
-<th className="p-3 border">Email</th>
-<th className="p-3 border">Message</th>
+<Link href="/admin/referrals">
+<div className="p-6 shadow rounded hover:shadow-lg cursor-pointer transition">
+<h2 className="text-xl font-bold">Referrals</h2>
+<p>Manage referrals</p>
+</div>
+</Link>
 
-</tr>
+<Link href="/admin/careers">
+<div className="p-6 shadow rounded hover:shadow-lg cursor-pointer transition">
+<h2 className="text-xl font-bold">Careers</h2>
+<p>Job applications</p>
+</div>
+</Link>
 
-</thead>
+<Link href="/admin/blog">
+<div className="p-6 shadow rounded hover:shadow-lg cursor-pointer transition">
+<h2 className="text-xl font-bold">Blog</h2>
+<p>Create blog posts</p>
+</div>
+</Link>
 
-<tbody>
+</div>
 
-{messages.map((msg,index)=>(
-
-<tr key={index}>
-
-<td className="border p-3">{msg.name}</td>
-<td className="border p-3">{msg.email}</td>
-<td className="border p-3">{msg.message}</td>
-
-</tr>
-
-))}
-
-</tbody>
-
-</table>
+</div>
 
 </div>
 
