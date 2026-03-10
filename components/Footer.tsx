@@ -13,10 +13,11 @@ export default function Footer() {
       </div>
 
       <div className="container" style={{ paddingTop: 64, paddingBottom: 40 }}>
-        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 56 }}>
+        {/* footer-grid class handles responsive columns in CSS */}
+        <div className="footer-grid" style={{ display: "grid", gap: 40, marginBottom: 56 }}>
 
           {/* Brand */}
-          <div className="footer-brand">
+          <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <img src="/logo.png" alt="Othdabere Healthcare logo" style={{ height: 46, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
               <div>
@@ -88,7 +89,7 @@ export default function Footer() {
               { icon:"📧", val:"othdaberehealthcare@gmail.com", href:"mailto:othdaberehealthcare@gmail.com" },
               { icon:"📍", val:"United Kingdom & Ghana", href:"#" },
             ].map(c => (
-              <a key={c.val} href={c.href} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.62)", textDecoration: "none", marginBottom: 14, transition: "color 0.2s" }}
+              <a key={c.val} href={c.href} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.85rem", color: "rgba(255,255,255,0.62)", textDecoration: "none", marginBottom: 14, transition: "color 0.2s", wordBreak: "break-word" }}
                 onMouseEnter={e => e.currentTarget.style.color="white"}
                 onMouseLeave={e => e.currentTarget.style.color="rgba(255,255,255,0.62)"}
               >
@@ -99,7 +100,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", justifyContent: "space-between" }}>
+        <div className="footer-bottom" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", justifyContent: "space-between" }}>
           <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.80rem", color: "rgba(255,255,255,0.38)", margin: 0 }}>
             © 2025 Othdabere H.Q. Healthcare Services Ltd. All rights reserved.
           </p>
