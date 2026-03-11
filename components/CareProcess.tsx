@@ -43,11 +43,11 @@ export default function CareProcess() {
       <div className="container">
 
         {/* Header */}
-        <ScrollReveal style={{ textAlign: "center", marginBottom: 72 }}>
+        <ScrollReveal style={{ textAlign: "center", marginBottom: 64 }}>
           <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>
             ⚡ Our Process
           </span>
-          <h2 className="sec-h2" style={{
+          <h2 style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: "clamp(2rem, 4vw, 3rem)",
             fontWeight: 700, color: "#0B2545",
@@ -65,38 +65,37 @@ export default function CareProcess() {
           </p>
         </ScrollReveal>
 
-        {/* Steps */}
-        <div className="process-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4,1fr)",
-          gap: 0, position: "relative",
-        }}>
-          {/* Connecting line */}
-          <div className="process-line" style={{
-            position: "absolute", top: 52, left: "12.5%", right: "12.5%", height: 2,
-            background: "linear-gradient(90deg,#F43F5E,#3B82F6,#10B981,#8B5CF6)",
-            zIndex: 0, opacity: 0.25,
-          }} />
-
+        {/* Steps grid — columns controlled ONLY by CSS, no inline gridTemplateColumns */}
+        <div className="process-grid">
           {steps.map((step, i) => (
-            <ScrollReveal key={i} delay={i * 120} style={{ padding: "0 16px", textAlign: "center", position: "relative", zIndex: 1 }}>
-              {/* Icon circle */}
+            <div key={i} className="process-step">
+
+              {/* Icon box */}
               <div style={{ position: "relative", marginBottom: 24, display: "inline-block" }}>
-                <div style={{
-                  width: 84, height: 84, borderRadius: 24,
-                  background: step.gradient,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "1.8rem",
-                  boxShadow: `0 10px 30px ${step.shadow}`,
-                  transition: "transform 0.3s, box-shadow 0.3s",
-                }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px) scale(1.05)"; (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 44px ${step.shadow}` }}
-                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = "none"; (e.currentTarget as HTMLDivElement).style.boxShadow = `0 10px 30px ${step.shadow}` }}
+                <div
+                  style={{
+                    width: 84, height: 84, borderRadius: 24,
+                    background: step.gradient,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: "1.8rem",
+                    boxShadow: `0 10px 30px ${step.shadow}`,
+                    transition: "transform 0.3s, box-shadow 0.3s",
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.transform = "translateY(-6px) scale(1.05)"
+                    el.style.boxShadow = `0 20px 44px ${step.shadow}`
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.transform = "none"
+                    el.style.boxShadow = `0 10px 30px ${step.shadow}`
+                  }}
                 >
                   {step.emoji}
                 </div>
 
-                {/* Step number badge */}
+                {/* Number badge */}
                 <div style={{
                   position: "absolute", top: -10, right: -10,
                   width: 28, height: 28, borderRadius: "50%",
@@ -119,10 +118,12 @@ export default function CareProcess() {
               <p style={{
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 color: "#64748B", fontSize: "0.87rem", lineHeight: 1.65,
+                margin: 0,
               }}>{step.desc}</p>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
+
       </div>
     </section>
   )

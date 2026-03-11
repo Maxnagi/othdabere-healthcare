@@ -243,22 +243,32 @@ img { max-width: 100%; display: block; }
   background: white;
 }
 
-/* ─── 11. Process Grid (4-col) ─── */
+/* ─── 11. Process Grid ─── */
 .process-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
+  gap: 16px;
+  /* Prevent any child from overflowing the grid */
+  overflow: hidden;
+  width: 100%;
 }
-.process-line {
-  position: absolute;
-  top: 52px;
-  left: 12.5%;
-  right: 12.5%;
-  height: 2px;
-  background: linear-gradient(90deg, #F43F5E, #3B82F6, #10B981, #8B5CF6);
-  z-index: 0;
-  opacity: 0.25;
+.process-step {
+  padding: 16px 12px;
+  text-align: center;
+  min-width: 0; /* important: prevents grid blowout */
+}
+
+/* ─── Services detail grid & badges ─── */
+.svc-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.svc-badges-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 /* ─── 12. Footer ─── */
@@ -420,6 +430,22 @@ img { max-width: 100%; display: block; }
   gap: 18px;
 }
 
+
+/* ─── Services page grid ─── */
+.services-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* Feature badges grid inside dark section */
+.services-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: start;
+}
+
 /* ════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ════════════════════════════════════════════════════════ */
@@ -477,12 +503,14 @@ img { max-width: 100%; display: block; }
   .care-services-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .care-benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
-  /* Process grid → 2×2 */
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-  .process-line { display: none; }
+  /* Process grid → 2×2 at tablet */
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .process-step { padding: 12px 8px; }
+
+  /* Services page grids at tablet */
+  .services-page-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .svc-detail-grid    { grid-template-columns: 1fr; gap: 36px; }
+  .svc-badges-grid    { grid-template-columns: 1fr 1fr; gap: 10px; }
 
   /* Footer stays 2-column at tablet */
   .footer-main-grid {
@@ -544,11 +572,14 @@ img { max-width: 100%; display: block; }
   /* Smaller section padding */
   .section-pad { padding: 56px 0; }
 
-  /* Process grid → single column */
-  .process-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  /* Process grid → 2×2 on mobile (fits better than 1-col) */
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .process-step { padding: 10px 6px; }
+
+  /* Services page grids on mobile */
+  .services-page-grid { grid-template-columns: 1fr; gap: 14px; }
+  .svc-detail-grid    { grid-template-columns: 1fr; gap: 28px; }
+  .svc-badges-grid    { grid-template-columns: 1fr 1fr; gap: 8px; }
 
   /* Footer → single column on mobile */
   .footer-main-grid {
@@ -630,4 +661,6 @@ img { max-width: 100%; display: block; }
   .stat-value { font-size: 1.35rem; }
   .stat-label { font-size: 0.58rem; }
   .care-benefits-grid { grid-template-columns: 1fr; }
+  .svc-badges-grid    { grid-template-columns: 1fr; }
+  .process-step       { padding: 8px 4px; }
 }
