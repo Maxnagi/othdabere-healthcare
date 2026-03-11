@@ -223,12 +223,45 @@ img { max-width: 100%; display: block; }
   opacity: 0.25;
 }
 
-/* ─── 12. Footer Grid ─── */
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
+/* ─── 12. Footer ─── */
+
+.footer-col-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 16px;
 }
+
+/* Desktop: 3-column footer grid */
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1.3fr;
+  gap: 48px;
+  margin-bottom: 44px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.footer-legal-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand-col {}
+.footer-links-col {}
+.footer-contact-col {}
 
 /* ─── 13. Floating Badges (WhyChooseUs) ─── */
 .float-badge-right { position: absolute; }
@@ -341,17 +374,12 @@ img { max-width: 100%; display: block; }
   .grid-2 {
     gap: 48px;
   }
-  .footer-grid {
-    grid-template-columns: 1.6fr 1fr 1fr;
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
     gap: 32px;
   }
-  /* Move the 4th footer column under first */
-  .footer-grid > *:last-child {
+  .footer-brand-col {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    align-items: start;
   }
 }
 
@@ -389,17 +417,23 @@ img { max-width: 100%; display: block; }
   }
   .process-line { display: none; }
 
-  /* Footer → 2 columns */
-  .footer-grid {
+  /* Footer stays 2-column at tablet */
+  .footer-main-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 28px;
   }
-  .footer-grid > *:last-child {
-    grid-column: auto;
-    display: block;
-  }
-  .footer-brand {
+  .footer-brand-col {
     grid-column: 1 / -1;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .footer-legal-links {
+    justify-content: center;
+    gap: 16px;
   }
 
   /* Float badges — pull in from negative offset */
@@ -449,12 +483,12 @@ img { max-width: 100%; display: block; }
     gap: 32px;
   }
 
-  /* Footer → single column */
-  .footer-grid {
+  /* Footer → single column on mobile */
+  .footer-main-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .footer-brand { grid-column: auto; }
+  .footer-brand-col { grid-column: auto; }
 
   /* Hero stat grid → 2×2 tighter */
   .hero-stat-grid {
