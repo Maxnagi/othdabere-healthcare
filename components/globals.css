@@ -595,11 +595,19 @@ img { max-width: 100%; display: block; }
   .svc-detail-grid    { grid-template-columns: 1fr; gap: 28px; }
   .svc-badges-grid    { grid-template-columns: 1fr 1fr; gap: 8px; }
 
-  /* Footer → single column on mobile */
+  /* Footer mobile: Brand full-width, Quick Links + Services side by side, Contact full-width */
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
     margin-bottom: 36px;
+  }
+  /* Brand spans full width */
+  .footer-grid > div:nth-child(1) {
+    grid-column: 1 / -1;
+  }
+  /* Contact spans full width */
+  .footer-grid > div:nth-child(4) {
+    grid-column: 1 / -1;
   }
   .footer-main-grid {
     grid-template-columns: 1fr;
