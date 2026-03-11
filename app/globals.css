@@ -67,12 +67,50 @@ img { max-width: 100%; display: block; }
 .page-hero { min-height: 380px; }
 
 /* Hero stat grid — 4 columns on desktop */
+.hero-text-block {
+  max-width: 780px;
+}
+
+/* Stat grid — 4 cards row on desktop */
 .hero-stat-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 56px;
-  max-width: 700px;
+  gap: 12px;
+  margin-top: 48px;
+  max-width: 680px;
+}
+
+/* Individual stat card */
+.stat-card {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+  cursor: default;
+}
+
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.62);
+  margin-top: 5px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Hero h1 size */
+.hero-h1-main {
+  font-size: clamp(2.4rem, 6vw, 5rem);
 }
 
 /* ─── 7. Section Labels & Dividers ─── */
@@ -362,6 +400,26 @@ img { max-width: 100%; display: block; }
 /* ─── 20. Misc Utilities ─── */
 .hidden-mobile { display: block; }
 
+
+/* ─── Domiciliary Care page grids ─── */
+.care-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.care-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.care-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
 /* ════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
    ════════════════════════════════════════════════════════ */
@@ -403,12 +461,21 @@ img { max-width: 100%; display: block; }
     gap: 40px;
   }
 
-  /* Hero stat grid → 2×2 */
+  /* Hero stat grid → 2×2 at tablet */
   .hero-stat-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 380px;
-    margin-top: 40px;
+    max-width: 400px;
+    margin-top: 36px;
+    gap: 10px;
   }
+  .stat-card { padding: 14px 8px; }
+  .stat-value { font-size: 1.7rem; }
+  .stat-label { font-size: 0.62rem; }
+
+  /* Domiciliary care grids → 2-col */
+  .care-card-grid     { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .care-services-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .care-benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
   /* Process grid → 2×2 */
   .process-grid {
@@ -490,12 +557,36 @@ img { max-width: 100%; display: block; }
   }
   .footer-brand-col { grid-column: auto; }
 
-  /* Hero stat grid → 2×2 tighter */
+  /* Hero stat grid — 2×2, compact cards, fits full width */
   .hero-stat-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
     max-width: 100%;
+    margin-top: 28px;
   }
+  .stat-card {
+    padding: 12px 6px;
+    border-radius: 11px;
+  }
+  .stat-value { font-size: 1.5rem; }
+  .stat-label { font-size: 0.60rem; margin-top: 3px; }
+
+  /* Hero CTA buttons stack on mobile */
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-cta-row .btn-primary,
+  .hero-cta-row .btn-secondary {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Domiciliary care grids → single column */
+  .care-card-grid     { grid-template-columns: 1fr; gap: 16px; }
+  .care-services-grid { grid-template-columns: 1fr; gap: 12px; }
+  .care-benefits-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
 
   /* Float badges become inline at top of image */
   .float-badge-right,
@@ -529,7 +620,14 @@ img { max-width: 100%; display: block; }
 
 /* ── Small mobile ── */
 @media (max-width: 400px) {
-  .container { padding: 0 14px; }
-  .section-pad { padding: 44px 0; }
-  .hero-stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .container { padding: 0 12px; }
+  .section-pad { padding: 40px 0; }
+  .hero-stat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+  .stat-card { padding: 10px 4px; border-radius: 10px; }
+  .stat-value { font-size: 1.35rem; }
+  .stat-label { font-size: 0.58rem; }
+  .care-benefits-grid { grid-template-columns: 1fr; }
 }
