@@ -124,8 +124,8 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
             <img src="/logo.png" alt="Othdabere Healthcare" style={{ height: 44, width: "auto", objectFit: "contain", display: "block" }} />
             <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.88rem", color: "#0B2545" }}>Othdabere High Quality.</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "0.67rem", color: "#64748B" }}>Healthcare Services Ltd</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.88rem", color: "#0B2545" }}>Othdabere High Quality</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "0.88rem", color: "#64748B" }}>Healthcare Services Ltd</div>
             </div>
           </Link>
 
