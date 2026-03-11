@@ -3,8 +3,9 @@
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import ScrollReveal from "@/components/ScrollReveal"
-import { supabase } from "@/lib/supabaseClient"
+import { supabase } from "@/lib/supabaseClient.ts"
 import { useState } from "react"
+import { error } from "console"
 
 export default function Contact() {
   const [name, setName] = useState("")
@@ -17,7 +18,8 @@ export default function Contact() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setLoading(true)
-    await supabase.from("contact_messages").insert([{ name, email, phone, message }])
+    await supabase.from("contact_messages").insert([{ name, email, phone, message }]) 
+    
     setLoading(false)
     setSent(true)
     setName(""); setEmail(""); setPhone(""); setMessage("")

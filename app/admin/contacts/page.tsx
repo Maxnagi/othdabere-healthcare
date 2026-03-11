@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { supabase } from "@/lib/supabaseClient"
+import { supabase } from "@/lib/supabaseClient.ts"
 import AdminSidebar from "@/components/admin/AdminSidebar"
 
 export default function Contacts() {
