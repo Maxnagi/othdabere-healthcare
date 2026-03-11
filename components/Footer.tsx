@@ -35,13 +35,13 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem" }}>Othdabere H.Q.</div>
+                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem" }}>Othdabere High Quality</div>
                 <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "0.7rem", color: "rgba(255,255,255,0.55)" }}>Healthcare Services Ltd</div>
               </div>
             </div>
 
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,0.58)", fontSize: "0.88rem", lineHeight: 1.7, marginBottom: 20, maxWidth: 280 }}>
-              Compassionate domiciliary care across the UK and Ghana — empowering individuals to live independently with dignity since 2021.
+             'A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope and Love for' Vulnerable within communities'. 
             </p>
 
             {/* Social icons */}
