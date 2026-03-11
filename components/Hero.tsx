@@ -58,7 +58,7 @@ export default function Hero() {
 
           {/* Subtext */}
           <p className="anim-fade-up delay-200" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:36, maxWidth:600 }}>
-            Othdabere H.Q. Healthcare Services provides professional domiciliary care designed to support individuals to live independently with dignity, safety, and comfort.
+            A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope and Love for' Vulnerable within communities'. 
           </p>
 
           {/* CTAs */}
