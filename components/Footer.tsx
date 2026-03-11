@@ -13,7 +13,7 @@ export default function Footer() {
       </div>
 
       <div className="container" style={{ paddingTop: 64, paddingBottom: 40 }}>
-        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 56 }}>
+        <div className="footer-grid" style={{}}>
 
           {/* Brand */}
           <div className="footer-brand">
