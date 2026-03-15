@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import AdminSidebar from "@/components/admin/AdminSidebar"
+import AdminGuard from "@/components/admin/AdminGuard"
 
 export default function Blog() {
   const [title, setTitle] = useState("")
@@ -44,6 +45,7 @@ export default function Blog() {
   }
 
   return (
+    <AdminGuard>
     <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
       <AdminSidebar />
       <div style={{ flex: 1, padding: "40px" }}>
@@ -184,5 +186,6 @@ export default function Blog() {
         </div>
       </div>
     </div>
+    </AdminGuard>
   )
 }

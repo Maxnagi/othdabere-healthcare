@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import AdminSidebar from "@/components/admin/AdminSidebar"
+import AdminGuard from "@/components/admin/AdminGuard"
 
 type ContactMessage = {
   id?: string
@@ -42,6 +43,7 @@ export default function Contacts() {
   }
 
   return (
+    <AdminGuard>
     <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
       <AdminSidebar />
 
@@ -216,5 +218,6 @@ export default function Contacts() {
         )}
       </div>
     </div>
+    </AdminGuard>
   )
 }

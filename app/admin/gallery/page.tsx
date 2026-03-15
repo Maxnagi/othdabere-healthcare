@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import AdminSidebar from "@/components/admin/AdminSidebar"
+import AdminGuard from "@/components/admin/AdminGuard"
 
 interface GalleryPhoto {
   id: string
@@ -67,6 +68,7 @@ export default function AdminGallery() {
   }
 
   return (
+    <AdminGuard>
     <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
       <AdminSidebar />
 
@@ -215,5 +217,6 @@ export default function AdminGallery() {
         }
       `}</style>
     </div>
+    </AdminGuard>
   )
 }

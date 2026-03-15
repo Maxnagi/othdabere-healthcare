@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import AdminSidebar from "@/components/admin/AdminSidebar"
+import AdminGuard from "@/components/admin/AdminGuard"
 
 export default function Referrals() {
   const [referrals, setReferrals] = useState<any[]>([])
@@ -17,6 +18,7 @@ export default function Referrals() {
   }
 
   return (
+    <AdminGuard>
     <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
       <AdminSidebar />
       <div style={{ flex: 1, padding: "40px" }}>
@@ -59,5 +61,6 @@ export default function Referrals() {
         )}
       </div>
     </div>
+    </AdminGuard>
   )
 }

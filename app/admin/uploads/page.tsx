@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { supabase } from "@/lib/supabaseClient"
 import AdminSidebar from "@/components/admin/AdminSidebar"
+import AdminGuard from "@/components/admin/AdminGuard"
 
 export default function Uploads() {
   const [file, setFile] = useState<any>(null)
@@ -37,6 +38,7 @@ export default function Uploads() {
   }
 
   return (
+    <AdminGuard>
     <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
       <AdminSidebar />
       <div style={{ flex: 1, padding: "40px" }}>
@@ -237,5 +239,6 @@ export default function Uploads() {
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       `}</style>
     </div>
+    </AdminGuard>
   )
 }
