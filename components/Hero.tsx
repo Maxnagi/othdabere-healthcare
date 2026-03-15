@@ -47,6 +47,11 @@ export default function Hero() {
             </span>
           </div>
 
+          {/* Company name */}
+          <p className="anim-fade-up delay-50" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"clamp(0.9rem,1.8vw,1.05rem)", color:"rgba(255,255,255,0.65)", letterSpacing:"0.04em", textTransform:"uppercase", marginBottom:14 }}>
+            Othdabere High Quality Healthcare Services Ltd
+          </p>
+
           {/* Heading */}
           <h1 className="anim-fade-up delay-100 hero-h1-main" style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
             Compassionate Care{" "}
@@ -58,7 +63,7 @@ export default function Hero() {
 
           {/* Subtext */}
           <p className="anim-fade-up delay-200" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:36, maxWidth:600 }}>
-            A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope and Love for' Vulnerable within communities'. 
+            A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope, and Love for vulnerable people within the communities.
           </p>
 
           {/* CTAs */}

@@ -29,7 +29,7 @@ export default async function BlogPage() {
             Insights & News
           </span>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "white", lineHeight: 1.1, marginTop: 16, marginBottom: 16, maxWidth: 600 }}>
-            Healthcare Blog
+            Latest News
           </h1>
           <div style={{ width: 60, height: 4, background: "linear-gradient(90deg, #38BDF8, #2DD4BF)", borderRadius: 2 }} />
         </div>

@@ -3,15 +3,19 @@ import Footer from "@/components/Footer"
 import CTA from "@/components/CTA"
 
 const services = [
-  { bg: "#FFF0F3", e: "🫀", title: "Personal Care",       desc: "Assistance with bathing, dressing, grooming and daily hygiene to ensure comfort and dignity." },
-  { bg: "#EFF6FF", e: "💊", title: "Medication Support",  desc: "Helping individuals manage medications safely, including reminders and prescription support." },
-  { bg: "#FFF7ED", e: "🍽️", title: "Meal Preparation",   desc: "Preparing healthy and nutritious meals that support wellbeing and specific dietary needs." },
-  { bg: "#F0FDF4", e: "🏡", title: "Household Support",   desc: "Light housekeeping, laundry, shopping and home organisation to maintain a safe environment." },
-  { bg: "#F5F3FF", e: "🤝", title: "Companionship",       desc: "Providing emotional support, conversation and assistance with community activities." },
-  { bg: "#ECFDF5", e: "🧠", title: "Specialised Care",    desc: "Support for individuals with disabilities, dementia, mobility issues and post-hospital care." },
-  { bg: "#EFF6FF", e: "🕐", title: "24/7 Support",        desc: "Round-the-clock access to our care coordinators and emergency support for peace of mind." },
-  { bg: "#F0FDF4", e: "📋", title: "Care Planning",       desc: "Thorough assessments and personalised care plans reviewed regularly to meet evolving needs." },
-  { bg: "#FFF0F3", e: "🕊️", title: "Palliative Care",    desc: "Sensitive, compassionate support for those with serious illness and their families." },
+  { bg: "#FFF0F3", e: "🫀", title: "Personal Care",          desc: "Assistance with bathing, dressing, grooming and daily hygiene to ensure comfort and dignity." },
+  { bg: "#EFF6FF", e: "💊", title: "Medication Support",     desc: "Helping individuals manage medications safely, including reminders and prescription support." },
+  { bg: "#FFF7ED", e: "🍽️", title: "Meal Preparation",      desc: "Preparing healthy and nutritious meals that support wellbeing and specific dietary needs." },
+  { bg: "#F0FDF4", e: "🏡", title: "Household Support",      desc: "Light housekeeping, laundry, shopping and home organisation to maintain a safe environment." },
+  { bg: "#F5F3FF", e: "🤝", title: "Companionship",          desc: "Providing emotional support, conversation and assistance with community activities." },
+  { bg: "#ECFDF5", e: "🧠", title: "Specialised Care",       desc: "Support for individuals with disabilities, dementia, mobility issues and post-hospital care." },
+  { bg: "#EFF6FF", e: "🕐", title: "24/7 Support",           desc: "Round-the-clock access to our care coordinators and emergency support for peace of mind." },
+  { bg: "#F0FDF4", e: "📋", title: "Care Planning",          desc: "Thorough assessments and personalised care plans reviewed regularly to meet evolving needs." },
+  { bg: "#FFF0F3", e: "🕊️", title: "Palliative Care",       desc: "Sensitive, compassionate support for those with serious illness and their families." },
+  { bg: "#F0FDFA", e: "🛏️", title: "Live In Care",          desc: "A dedicated carer lives in the home providing round-the-clock support, companionship and assistance while maintaining full independence and comfort." },
+  { bg: "#FEF3C7", e: "🌿", title: "Respite Care",           desc: "Short-term relief care for family caregivers, ensuring your loved one continues to receive quality support while you take a well-earned break." },
+  { bg: "#EDE9FE", e: "💪", title: "Rehabilitation Care",    desc: "Structured support to help individuals regain independence and confidence after illness, surgery or injury, working alongside healthcare professionals." },
+  { bg: "#FFF1F2", e: "🏘️", title: "Supportive Living",     desc: "Empowering individuals with learning disabilities or mental health needs to live as independently as possible within their own homes and communities." },
 ]
 
 export default function Services() {
