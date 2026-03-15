@@ -39,21 +39,8 @@ export default function Hero() {
       <div className="container" style={{ position:"relative", zIndex:1, paddingTop:80, paddingBottom:60, width:"100%" }}>
         <div className="hero-text-block">
 
-          {/* Badge */}
-          <div className="anim-fade-up" style={{ marginBottom:22 }}>
-            <span style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(13,148,136,0.18)", border:"1px solid rgba(20,184,166,0.38)", color:"#5EEAD4", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"0.72rem", letterSpacing:"0.14em", textTransform:"uppercase", padding:"7px 16px", borderRadius:100 }}>
-              <span style={{ width:7, height:7, borderRadius:"50%", background:"#2DD4BF", display:"inline-block", animation:"pulseRing 2s ease-in-out infinite" }} />
-              Professional Domiciliary Care — UK & Ghana
-            </span>
-          </div>
-
-          {/* Company name */}
-          <p className="anim-fade-up delay-50" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"clamp(0.9rem,1.8vw,1.05rem)", color:"rgba(255,255,255,0.65)", letterSpacing:"0.04em", textTransform:"uppercase", marginBottom:14 }}>
-            Othdabere High Quality Healthcare Services Ltd
-          </p>
-
-          {/* Heading */}
-          <h1 className="anim-fade-up delay-100 hero-h1-main" style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
+          {/* Heading — first */}
+          <h1 className="anim-fade-up hero-h1-main" style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
             Compassionate Care{" "}
             <span style={{ background:"linear-gradient(135deg,#38BDF8,#2DD4BF,#10B981)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
               in the Comfort
@@ -61,10 +48,18 @@ export default function Hero() {
             of Your Home
           </h1>
 
-          {/* Subtext */}
-          <p className="anim-fade-up delay-200" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:36, maxWidth:600 }}>
-            A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope, and Love for vulnerable people within the communities.
+          {/* Subtext — second */}
+          <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600 }}>
+            A Voice for the Voiceless Domiciliary Care Agency; Reviving Care, Hope, and Love for vulnerable people within the communities.
           </p>
+
+          {/* UK & Ghana badge — third */}
+          <div className="anim-fade-up delay-200" style={{ marginBottom:36 }}>
+            <span style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(13,148,136,0.18)", border:"1px solid rgba(20,184,166,0.38)", color:"#5EEAD4", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"0.72rem", letterSpacing:"0.14em", textTransform:"uppercase", padding:"7px 16px", borderRadius:100 }}>
+              <span style={{ width:7, height:7, borderRadius:"50%", background:"#2DD4BF", display:"inline-block", animation:"pulseRing 2s ease-in-out infinite" }} />
+              Professional Domiciliary Care based in UK &amp; GHANA
+            </span>
+          </div>
 
           {/* CTAs */}
           <div className="anim-fade-up delay-300 hero-cta-row" style={{ display:"flex", flexWrap:"wrap", gap:12, marginBottom:44 }}>
