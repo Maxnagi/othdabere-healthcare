@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline — OHQHS Admin</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0B2545 0%, #1e3a5f 100%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: white; text-align: center; padding: 24px;
+    }
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px; padding: 48px 36px; max-width: 420px;
+    }
+    .icon { font-size: 3.5rem; margin-bottom: 16px; }
+    .label {
+      display: inline-block;
+      background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4);
+      color: #FCA5A5; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 20px;
+    }
+    h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+    p  { color: rgba(255,255,255,0.65); font-size: 0.94rem; line-height: 1.7; margin-bottom: 28px; }
+    button {
+      background: rgba(255,255,255,0.12);
+      color: white; border: 1.5px solid rgba(255,255,255,0.25);
+      padding: 13px 30px; border-radius: 50px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🔒</div>
+    <div class="label">Admin — No Connection</div>
+    <h1>Dashboard Offline</h1>
+    <p>The admin dashboard requires an internet connection. Please reconnect to manage contacts, referrals, and content.</p>
+    <button onclick="window.location.reload()">Reconnect & Retry</button>
+  </div>
+</body>
+</html>

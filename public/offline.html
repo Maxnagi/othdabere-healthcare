@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline — OHQHS Care</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0B2545 0%, #0D4a4a 100%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 48px 36px;
+      max-width: 440px;
+      backdrop-filter: blur(12px);
+    }
+    .icon { font-size: 4rem; margin-bottom: 20px; }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
+    p  { color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.7; margin-bottom: 28px; }
+    .badge {
+      display: inline-block;
+      background: rgba(13,148,136,0.25);
+      border: 1px solid rgba(13,148,136,0.5);
+      color: #5EEAD4;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 50px; margin-bottom: 28px;
+    }
+    button {
+      background: linear-gradient(135deg, #0D9488, #38BDF8);
+      color: white; border: none;
+      padding: 14px 32px; border-radius: 50px;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    button:hover { opacity: 0.88; }
+    .contact {
+      margin-top: 24px;
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .contact a { color: #5EEAD4; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🏥</div>
+    <div class="badge">No Internet Connection</div>
+    <h1>You're offline</h1>
+    <p>Please check your connection. Once you're back online, we'll be here to help with your care needs.</p>
+    <button onclick="window.location.reload()">Try Again</button>
+    <div class="contact">
+      Need urgent care? Call us: <a href="tel:+447588160799">+44 7588 160799</a>
+    </div>
+  </div>
+</body>
+</html>
