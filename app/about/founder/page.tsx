@@ -88,7 +88,7 @@ export default function FounderPage() {
             <ScrollReveal direction="left">
               <div style={{ position: "relative", top: 0 }}>
                 <div style={{ borderRadius: 28, overflow: "hidden", boxShadow: "0 24px 64px rgba(11,37,69,0.18)", aspectRatio: "3/4" }}>
-                  <img src="/images/founder.jpeg" alt="Dorothy Ohenewa – Founder" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                  <img src="/images/founder.png" alt="Dorothy Ohenewa – Founder" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 </div>
                 {/* Award badge */}
                 <div style={{ marginTop: 20, background: "linear-gradient(135deg,#FEF9C3,#FEF3C7)", border: "1.5px solid #F59E0B44", borderRadius: 18, padding: "18px 22px", display: "flex", alignItems: "center", gap: 14 }}>
@@ -176,9 +176,9 @@ export default function FounderPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 28 }}>
             {[
-              { img: "/images/Team-1.jpeg", role: "Trained Carer & Support Worker" },
-              { img: "/images/Team-2.jpeg", role: "Domiciliary Care Professional" },
-              { img: "/images/Team-3.jpeg", role: "Health & Wellbeing Specialist" },
+              { img: "/images/team-1.png", role: "Trained Carer & Support Worker" },
+              { img: "/images/team-2.png", role: "Domiciliary Care Professional" },
+              { img: "/images/team-3.png", role: "Health & Wellbeing Specialist" },
             ].map((member, i) => (
               <ScrollReveal key={i} delay={i * 120}>
                 <div className="card-lift" style={{ borderRadius: 22, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0", boxShadow: "0 4px 24px rgba(11,37,69,0.07)" }}>
