@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Offline — OHQHS Admin</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #0B2545 0%, #1e3a5f 100%);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      color: white; text-align: center; padding: 24px;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#0B2545,#1e3a5f);
+      font-family:'Segoe UI',system-ui,sans-serif;color:#fff;
+      padding:24px;text-align:center;
     }
-    .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 24px; padding: 48px 36px; max-width: 420px;
+    .card{
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);
+      border-radius:22px;padding:clamp(28px,5vw,48px) clamp(20px,4vw,40px);
+      max-width:400px;width:100%;
     }
-    .icon { font-size: 3.5rem; margin-bottom: 16px; }
-    .label {
-      display: inline-block;
-      background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4);
-      color: #FCA5A5; font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 50px; margin-bottom: 20px;
+    .icon{font-size:clamp(2.4rem,7vw,3.5rem);margin-bottom:16px}
+    .badge{
+      display:inline-block;
+      background:rgba(239,68,68,.18);border:1px solid rgba(239,68,68,.36);
+      color:#FCA5A5;font-size:.7rem;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;
+      padding:5px 14px;border-radius:50px;margin-bottom:18px;
     }
-    h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
-    p  { color: rgba(255,255,255,0.65); font-size: 0.94rem; line-height: 1.7; margin-bottom: 28px; }
-    button {
-      background: rgba(255,255,255,0.12);
-      color: white; border: 1.5px solid rgba(255,255,255,0.25);
-      padding: 13px 30px; border-radius: 50px;
-      font-size: 0.95rem; font-weight: 600; cursor: pointer;
-      transition: background 0.2s;
+    h1{font-size:clamp(1.4rem,4vw,1.75rem);font-weight:700;margin-bottom:10px}
+    p{color:rgba(255,255,255,.62);font-size:clamp(.84rem,2.2vw,.96rem);line-height:1.7;margin-bottom:26px}
+    .btn{
+      display:inline-block;background:rgba(255,255,255,.1);
+      color:#fff;border:1.5px solid rgba(255,255,255,.22);
+      padding:12px 28px;border-radius:50px;
+      font-size:.92rem;font-weight:600;cursor:pointer;transition:background .2s;
     }
-    button:hover { background: rgba(255,255,255,0.2); }
+    .btn:hover{background:rgba(255,255,255,.18)}
   </style>
 </head>
 <body>
   <div class="card">
     <div class="icon">🔒</div>
-    <div class="label">Admin — No Connection</div>
+    <div class="badge">Admin — No Connection</div>
     <h1>Dashboard Offline</h1>
-    <p>The admin dashboard requires an internet connection. Please reconnect to manage contacts, referrals, and content.</p>
-    <button onclick="window.location.reload()">Reconnect & Retry</button>
+    <p>The admin dashboard requires an internet connection to load live data. Please reconnect and try again.</p>
+    <button class="btn" onclick="location.reload()">Reconnect & Retry</button>
   </div>
 </body>
 </html>

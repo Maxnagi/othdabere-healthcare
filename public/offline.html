@@ -1,54 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Offline — OHQHS Care</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #0B2545 0%, #0D4a4a 100%);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      color: white;
-      text-align: center;
-      padding: 24px;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#0B2545 0%,#0d4a4a 100%);
+      font-family:'Segoe UI',system-ui,sans-serif;color:#fff;
+      padding:24px;text-align:center;
     }
-    .card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 24px;
-      padding: 48px 36px;
-      max-width: 440px;
-      backdrop-filter: blur(12px);
+    .card{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+      border-radius:24px;padding:clamp(32px,6vw,52px) clamp(24px,5vw,44px);
+      max-width:420px;width:100%;backdrop-filter:blur(12px);
     }
-    .icon { font-size: 4rem; margin-bottom: 20px; }
-    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; }
-    p  { color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.7; margin-bottom: 28px; }
-    .badge {
-      display: inline-block;
-      background: rgba(13,148,136,0.25);
-      border: 1px solid rgba(13,148,136,0.5);
-      color: #5EEAD4;
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 50px; margin-bottom: 28px;
+    .icon{font-size:clamp(2.8rem,8vw,4rem);margin-bottom:18px}
+    .badge{
+      display:inline-block;
+      background:rgba(13,148,136,.22);border:1px solid rgba(13,148,136,.45);
+      color:#5EEAD4;font-size:.72rem;font-weight:700;
+      letter-spacing:.1em;text-transform:uppercase;
+      padding:5px 14px;border-radius:50px;margin-bottom:20px;
     }
-    button {
-      background: linear-gradient(135deg, #0D9488, #38BDF8);
-      color: white; border: none;
-      padding: 14px 32px; border-radius: 50px;
-      font-size: 1rem; font-weight: 600;
-      cursor: pointer; transition: opacity 0.2s;
+    h1{font-size:clamp(1.5rem,4vw,1.9rem);font-weight:700;margin-bottom:10px}
+    p{color:rgba(255,255,255,.7);font-size:clamp(.88rem,2.5vw,1rem);line-height:1.7;margin-bottom:28px}
+    .btn{
+      display:inline-block;
+      background:linear-gradient(135deg,#0D9488,#38BDF8);
+      color:#fff;border:none;padding:14px 32px;border-radius:50px;
+      font-size:1rem;font-weight:700;cursor:pointer;
+      transition:opacity .2s;text-decoration:none;
     }
-    button:hover { opacity: 0.88; }
-    .contact {
-      margin-top: 24px;
-      font-size: 0.84rem;
-      color: rgba(255,255,255,0.55);
-    }
-    .contact a { color: #5EEAD4; text-decoration: none; }
+    .btn:hover{opacity:.85}
+    .contact{margin-top:22px;font-size:.82rem;color:rgba(255,255,255,.5)}
+    .contact a{color:#5EEAD4;text-decoration:none;font-weight:600}
   </style>
 </head>
 <body>
@@ -56,10 +44,10 @@
     <div class="icon">🏥</div>
     <div class="badge">No Internet Connection</div>
     <h1>You're offline</h1>
-    <p>Please check your connection. Once you're back online, we'll be here to help with your care needs.</p>
-    <button onclick="window.location.reload()">Try Again</button>
+    <p>Please check your connection. Once you're back online, our care team is ready to help.</p>
+    <button class="btn" onclick="location.reload()">Try Again</button>
     <div class="contact">
-      Need urgent care? Call us: <a href="tel:+447588160799">+44 7588 160799</a>
+      Urgent care? Call: <a href="tel:+447588160799">+44 7588 160799</a>
     </div>
   </div>
 </body>

@@ -1,117 +1,68 @@
-/* ===================================================
-   OHQHS Main Site Service Worker  v1.0
-   Scope: /  (excludes /admin — handled by admin-sw.js)
-   =================================================== */
+/* =====================================================
+   OHQHS Main Service Worker  v1.0
+   Scope: /   (admin is handled by admin-sw.js)
+   ===================================================== */
 
-const CACHE_NAME   = "ohqhs-main-v1";
-const ADMIN_SCOPE  = "/admin";
+const CACHE = "ohqhs-v1";
 
-// Assets to pre-cache on install
-const PRECACHE_URLS = [
+const PRECACHE = [
   "/",
   "/about",
   "/services",
   "/contact",
   "/domiciliary-care",
-  "/manifest.json",
   "/offline.html",
 ];
 
 // ── Install ──────────────────────────────────────────
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(PRECACHE_URLS).catch((err) => {
-        console.warn("[SW] Pre-cache failed for some URLs", err);
-      });
-    })
+self.addEventListener("install", (e) => {
+  e.waitUntil(
+    caches.open(CACHE).then((c) =>
+      c.addAll(PRECACHE).catch(() => {}) // non-fatal if some fail
+    )
   );
   self.skipWaiting();
 });
 
-// ── Activate ─────────────────────────────────────────
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
+// ── Activate — clean old caches ─────────────────────
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME && key.startsWith("ohqhs-main-"))
-          .map((key) => caches.delete(key))
+        keys.filter((k) => k !== CACHE && k.startsWith("ohqhs-")).map((k) => caches.delete(k))
       )
     )
   );
   self.clients.claim();
 });
 
-// ── Fetch ─────────────────────────────────────────────
-self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
+// ── Fetch ────────────────────────────────────────────
+self.addEventListener("fetch", (e) => {
+  const url = new URL(e.request.url);
 
-  // Don't intercept admin routes — let admin SW handle those
-  if (url.pathname.startsWith(ADMIN_SCOPE)) return;
+  // Let admin SW handle admin routes
+  if (url.pathname.startsWith("/admin")) return;
+  // Only handle same-origin GET
+  if (e.request.method !== "GET" || url.origin !== location.origin) return;
+  // Network-only for API routes
+  if (url.pathname.startsWith("/api/")) return;
 
-  // Don't intercept non-GET or cross-origin
-  if (event.request.method !== "GET") return;
-  if (url.origin !== self.location.origin) return;
-
-  // API routes: network-only
-  if (url.pathname.startsWith("/api/")) {
-    event.respondWith(fetch(event.request));
-    return;
-  }
-
-  // Next.js internal routes: network-only
-  if (url.pathname.startsWith("/_next/")) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then((cache) =>
-        cache.match(event.request).then((cached) => {
-          const fetchPromise = fetch(event.request).then((res) => {
-            if (res && res.status === 200) cache.put(event.request, res.clone());
-            return res;
-          });
-          return cached || fetchPromise;
-        })
-      )
-    );
-    return;
-  }
-
-  // Pages & assets: Stale-While-Revalidate
-  event.respondWith(
-    caches.open(CACHE_NAME).then((cache) =>
-      cache.match(event.request).then((cached) => {
-        const fetchPromise = fetch(event.request)
+  // Stale-while-revalidate for everything else
+  e.respondWith(
+    caches.open(CACHE).then((cache) =>
+      cache.match(e.request).then((cached) => {
+        const network = fetch(e.request)
           .then((res) => {
-            if (res && res.status === 200) cache.put(event.request, res.clone());
+            if (res && res.status === 200) cache.put(e.request, res.clone());
             return res;
           })
-          .catch(() => {
-            // Offline fallback for navigation requests
-            if (event.request.mode === "navigate") {
-              return cache.match("/offline.html") || cache.match("/");
-            }
-          });
-        return cached || fetchPromise;
+          .catch(() =>
+            e.request.mode === "navigate"
+              ? cache.match("/offline.html")
+              : undefined
+          );
+        return cached || network;
       })
     )
   );
-});
-
-// ── Push Notifications (future use) ──────────────────
-self.addEventListener("push", (event) => {
-  if (!event.data) return;
-  const data = event.data.json();
-  event.waitUntil(
-    self.registration.showNotification(data.title || "OHQHS", {
-      body:    data.body  || "You have a new notification.",
-      icon:    "/icons/icon-192.png",
-      badge:   "/icons/icon-72.png",
-      data:    { url: data.url || "/" },
-    })
-  );
-});
-
-self.addEventListener("notificationclick", (event) => {
-  event.notification.close();
-  event.waitUntil(clients.openWindow(event.notification.data.url));
 });
