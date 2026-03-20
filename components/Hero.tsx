@@ -48,6 +48,24 @@ export default function Hero() {
             of Your Home
           </h1>
 
+          {/* OHQHS brand line — between heading and slogan */}
+          <div className="anim-fade-up delay-75" style={{ marginBottom:22 }}>
+            <span style={{
+              display:"inline-block",
+              fontFamily:"'Plus Jakarta Sans',sans-serif",
+              fontWeight:800,
+              fontSize:"clamp(1rem,2.2vw,1.32rem)",
+              letterSpacing:"0.01em",
+              background:"linear-gradient(135deg,#38BDF8 0%,#2DD4BF 50%,#10B981 100%)",
+              WebkitBackgroundClip:"text",
+              WebkitTextFillColor:"transparent",
+              backgroundClip:"text",
+            }}>
+              Othdabere High Quality Healthcare Services{" "}
+              <span style={{ fontWeight:700, fontSize:"0.88em", opacity:0.9 }}>(OHQHS)</span>
+            </span>
+          </div>
+
           {/* Subtext — second */}
           <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600 }}>
             A Voice for the Voiceless Domiciliary Care Agency; Reviving Care, Hope, and Love for vulnerable people within the communities.

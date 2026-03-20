@@ -41,7 +41,7 @@ export default function Footer() {
             </div>
 
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,0.58)", fontSize: "0.88rem", lineHeight: 1.7, marginBottom: 20, maxWidth: 280 }}>
-             'A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope and Love for' Vulnerable within communities'. 
+             'A Voice for the Voiceless Domiciliary Care Agency: Reviving Care, Hope and Love for' Vulnerable people within communities'. 
             </p>
 
             {/* Social icons */}
