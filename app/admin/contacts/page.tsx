@@ -44,10 +44,10 @@ export default function Contacts() {
 
   return (
     <AdminGuard>
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
+    <div className="admin-layout">
       <AdminSidebar />
 
-      <div style={{ flex: 1, padding: "40px" }}>
+      <div className="admin-content">
         <div style={{ marginBottom: 32 }}>
           <h1
             style={{
@@ -112,7 +112,8 @@ export default function Contacts() {
               overflow: "hidden"
             }}
           >
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 600 }}>
               <thead>
                 <tr
                   style={{
@@ -213,7 +214,7 @@ export default function Contacts() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           </div>
         )}
       </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import AdminPWAInstall from "@/components/admin/AdminPWAInstall";
+import "../globals.css";
 
 export const viewport: Viewport = {
   themeColor: "#0B2545",

@@ -69,10 +69,10 @@ export default function AdminGallery() {
 
   return (
     <AdminGuard>
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
+    <div className="admin-layout">
       <AdminSidebar />
 
-      <div style={{ flex: 1, padding: "clamp(20px,4vw,40px)", overflowX: "hidden" }}>
+      <div className="admin-content">
 
         {/* Header */}
         <div style={{ marginBottom: 36 }}>
@@ -84,7 +84,7 @@ export default function AdminGallery() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 28, alignItems: "flex-start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,360px),1fr))", gap: 28, alignItems: "flex-start" }}>
 
           {/* Upload Panel */}
           <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 20, padding: "32px" }}>

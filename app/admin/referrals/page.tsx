@@ -19,9 +19,9 @@ export default function Referrals() {
 
   return (
     <AdminGuard>
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
+    <div className="admin-layout">
       <AdminSidebar />
-      <div style={{ flex: 1, padding: "40px" }}>
+      <div className="admin-content">
         <div style={{ marginBottom: 32 }}>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "#0B2545", marginBottom: 4 }}>Referrals</h1>
           <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.9rem" }}>{referrals.length} referral{referrals.length !== 1 ? "s" : ""} received</p>
@@ -35,7 +35,7 @@ export default function Referrals() {
           </div>
         ) : (
           <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 20, overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}><table style={{ width: "100%", borderCollapse: "collapse", minWidth: 600 }}>
               <thead>
                 <tr style={{ background: "#F8FAFD", borderBottom: "1.5px solid #E2E8F0" }}>
                   {["Referrer", "Email", "Person Needing Care", "Care Requirements", "Date"].map(h => (
@@ -56,7 +56,7 @@ export default function Referrals() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           </div>
         )}
       </div>

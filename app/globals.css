@@ -372,6 +372,7 @@ img { max-width: 100%; display: block; height: auto; }
 }
 
 /* ─── Admin Layout ─── */
+/* Desktop: sidebar (flex child) + content side by side */
 .admin-layout {
   display: flex;
   min-height: 100vh;
@@ -383,16 +384,20 @@ img { max-width: 100%; display: block; height: auto; }
   min-width: 0;
   overflow-x: hidden;
 }
+
+/* Mobile: sidebar hidden, fixed topbar 56px takes over.
+   admin-layout → block so the hidden flex-child doesn't reserve space.
+   admin-content gets top padding to clear the fixed topbar. */
 @media (max-width: 900px) {
   .admin-layout {
-    flex-direction: column;
+    display: block !important;
   }
   .admin-content {
-    padding: 24px 16px;
+    padding: 80px 16px 24px !important;
   }
 }
 @media (max-width: 480px) {
   .admin-content {
-    padding: 16px 12px;
+    padding: 76px 12px 20px !important;
   }
 }

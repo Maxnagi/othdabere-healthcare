@@ -46,9 +46,9 @@ export default function Blog() {
 
   return (
     <AdminGuard>
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
+    <div className="admin-layout">
       <AdminSidebar />
-      <div style={{ flex: 1, padding: "40px" }}>
+      <div className="admin-content">
 
         <div style={{ marginBottom: 36 }}>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "#0B2545", marginBottom: 4 }}>
@@ -59,7 +59,7 @@ export default function Blog() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,400px),1fr))", gap: 32 }}>
 
           {/* Create form */}
           <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 20, padding: "32px" }}>

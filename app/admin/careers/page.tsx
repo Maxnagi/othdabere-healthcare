@@ -22,9 +22,9 @@ export default function Careers() {
 
   return (
     <AdminGuard>
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F8FAFD" }}>
+    <div className="admin-layout">
       <AdminSidebar />
-      <div style={{ flex: 1, padding: "40px" }}>
+      <div className="admin-content">
 
         <div style={{ marginBottom: 32 }}>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "#0B2545", marginBottom: 4 }}>
@@ -49,7 +49,8 @@ export default function Careers() {
           </div>
         ) : (
           <div style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 20, overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 560 }}>
               <thead>
                 <tr style={{ background: "#F8FAFD", borderBottom: "1.5px solid #E2E8F0" }}>
                   {["Name", "Email", "Phone", "CV", "Applied"].map(h => (
@@ -91,7 +92,7 @@ export default function Careers() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           </div>
         )}
       </div>
