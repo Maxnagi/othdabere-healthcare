@@ -68,7 +68,7 @@ export default function Hero() {
 
           {/* Subtext — second */}
           <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600 }}>
-            A Voice for the Voiceless Domiciliary Care Agency; Reviving Care, Hope, and Love for vulnerable people within the communities.
+            A Voice for the Voiceless, Care & Dignity for the Soul
           </p>
 
           {/* UK & Ghana badge — third */}

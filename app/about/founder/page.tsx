@@ -88,7 +88,7 @@ export default function FounderPage() {
             <ScrollReveal direction="left">
               <div style={{ position: "relative", top: 0 }}>
                 <div style={{ borderRadius: 28, overflow: "hidden", boxShadow: "0 24px 64px rgba(11,37,69,0.18)", aspectRatio: "3/4" }}>
-                  <img src="/images/founder.png" alt="Dorothy Ohenewa – Founder" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                  <img src="/images/founder.jpeg" alt="Dorothy Ohenewa – Founder" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 </div>
                 {/* Award badge */}
                 <div style={{ marginTop: 20, background: "linear-gradient(135deg,#FEF9C3,#FEF3C7)", border: "1.5px solid #F59E0B44", borderRadius: 18, padding: "18px 22px", display: "flex", alignItems: "center", gap: 14 }}>
