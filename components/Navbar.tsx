@@ -126,8 +126,8 @@ export default function Navbar() {
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
             <img src="/logo.png" alt="Othdabere Healthcare" style={{ height: 60, width: "auto", objectFit: "contain", display: "block" }} />
             <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.88rem", background: "linear-gradient(135deg,#0D9488,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Othdabere High Quality</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "0.88rem", color: "#64748B" }}>Healthcare Services Ltd</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25" }}>Othdabere High Quality</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25" }}>Healthcare Services Ltd</div>
             </div>
           </Link>
 
