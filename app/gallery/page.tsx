@@ -25,7 +25,7 @@ export default async function GalleryPage() {
         backgroundSize: "cover", backgroundPosition: "center",
       }}>
         <div className="hero-overlay-light" style={{ position: "absolute", inset: 0 }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <span className="section-label" style={{ marginBottom: 20, display: "inline-flex", background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>
             🖼️ Our Gallery
           </span>
@@ -41,7 +41,7 @@ export default async function GalleryPage() {
 
       {/* GALLERY GRID */}
       <section style={{ background: "white", padding: "96px 0" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div className="container">
 
           <style>{`
             .gallery-masonry {

@@ -117,7 +117,7 @@ export default function Contact() {
         backgroundSize: "cover", backgroundPosition: "center",
       }}>
         <div className="hero-overlay-light" style={{ position: "absolute", inset: 0 }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <span className="section-label" style={{ marginBottom: 20, display: "inline-flex", background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>
             💬 Get In Touch
           </span>
@@ -133,7 +133,7 @@ export default function Contact() {
 
       {/* CONTACT INFO CARDS */}
       <section style={{ background: "white", padding: "64px 0 0" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div className="container">
           <div className="contact-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginBottom: 64 }}>
             {contactInfo.map((item, i) => (
               <div key={i} className="contact-card" style={{ background: "white", border: "1.5px solid #E2E8F0", borderRadius: 20, padding: "28px 24px", boxShadow: "0 2px 12px rgba(11,37,69,0.05)" }}>
@@ -154,7 +154,7 @@ export default function Contact() {
 
       {/* FORM + SIDEBAR */}
       <section style={{ background: "#F8FAFD", padding: "72px 0 96px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div className="container">
           <div className="contact-two-col" style={{ display: "flex", gap: 40, alignItems: "flex-start" }}>
 
             {/* FORM */}

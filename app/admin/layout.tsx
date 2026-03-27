@@ -10,7 +10,6 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "OHQHS Admin Dashboard",
   description: "Admin management dashboard for Othdabere High Quality Healthcare Services.",
-  // Override the root manifest so admin gets its own PWA identity
   manifest: "/admin-manifest.json",
   appleWebApp: {
     capable: true,
@@ -18,15 +17,10 @@ export const metadata: Metadata = {
     title: "OHQHS Admin",
   },
   icons: {
-    icon: [
-      { url: "/icons/admin-icon-192.png", sizes: "192x192", type: "image/png" },
-    ],
-    apple: [
-      { url: "/icons/admin-icon-180.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: [{ url: "/icons/admin-icon-192.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "/icons/admin-icon-180.png", sizes: "180x180", type: "image/png" }],
     shortcut: "/icons/admin-icon-192.png",
   },
-  // Don't index admin in search engines
   robots: { index: false, follow: false },
 };
 

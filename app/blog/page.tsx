@@ -24,7 +24,7 @@ export default async function BlogPage() {
         backgroundSize: "cover", backgroundPosition: "center",
       }}>
         <div className="hero-overlay-light" style={{ position: "absolute", inset: 0 }} />
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px", position: "relative", zIndex: 1 }}>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <span className="section-label" style={{ marginBottom: 20, display: "inline-flex", background: "rgba(13,148,136,0.18)", border: "1px solid rgba(20,184,166,0.35)", color: "#5EEAD4" }}>
             Insights & News
           </span>
@@ -37,7 +37,7 @@ export default async function BlogPage() {
 
       {/* POSTS */}
       <section style={{ padding: "100px 0", background: "white" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div className="container">
           {posts && posts.length > 0 ? (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 28 }}>
               {posts?.map((post: any) => (

@@ -18,14 +18,14 @@ export default function WhyChooseUs() {
 
           {/* Image */}
           <ScrollReveal direction="left">
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", padding: "0 24px" }}>
               <div style={{ borderRadius: 24, overflow: "hidden" }}>
                 <img src="/images/why-choose-us.jpg" alt="Why choose Othdabere"
                   style={{ width: "100%", height: 500, objectFit: "cover", display: "block" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,transparent 50%,rgba(11,37,69,0.55) 100%)" }} />
               </div>
               {/* Satisfaction badge */}
-              <div className="float-badge-right" style={{ position: "absolute", bottom: 28, right: -20, background: "white", borderRadius: 18, padding: "16px 20px", boxShadow: "0 16px 40px rgba(11,37,69,0.15)", display: "flex", alignItems: "center", gap: 14 }}>
+              <div className="float-badge-right" style={{ position: "absolute", bottom: 28, right: 4, background: "white", borderRadius: 18, padding: "16px 20px", boxShadow: "0 16px 40px rgba(11,37,69,0.15)", display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 48, height: 48, borderRadius: 14, background: "linear-gradient(135deg,#0D9488,#14B8A6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.4rem", flexShrink: 0 }}>⭐</div>
                 <div>
                   <div style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 700, fontSize: "1.1rem", color: "#0B2545" }}>98% Satisfaction</div>
@@ -33,7 +33,7 @@ export default function WhyChooseUs() {
                 </div>
               </div>
               {/* Experience badge */}
-              <div className="float-badge-left" style={{ position: "absolute", top: 28, left: -20, background: "linear-gradient(135deg,#F43F5E,#F97316)", borderRadius: 16, padding: "16px 22px", boxShadow: "0 12px 32px rgba(244,63,94,0.35)", textAlign: "center" }}>
+              <div className="float-badge-left" style={{ position: "absolute", top: 28, left: 4, background: "linear-gradient(135deg,#F43F5E,#F97316)", borderRadius: 16, padding: "16px 22px", boxShadow: "0 12px 32px rgba(244,63,94,0.35)", textAlign: "center" }}>
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 700, fontSize: "2.4rem", color: "white", lineHeight: 1 }}>3+</div>
                 <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.68rem", color: "rgba(255,255,255,0.85)", marginTop: 4, textTransform: "uppercase", letterSpacing: "0.06em" }}>Years of Care</div>
               </div>

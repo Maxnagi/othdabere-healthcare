@@ -159,7 +159,7 @@ export default function Navbar() {
 
             {/* Burger */}
             <button onClick={() => setOpen(!open)} className="nav-burger"
-              style={{ background: open ? "linear-gradient(135deg,#ECFDF5,#ECFEFF)" : "none", border: `1.5px solid ${open ? "rgba(13,148,136,0.3)" : "#E2E8F0"}`, borderRadius: 10, cursor: "pointer", padding: "9px", display: "none", alignItems: "center", justifyContent: "center", transition: "all 0.22s" }}
+              style={{ background: open ? "linear-gradient(135deg,#ECFDF5,#ECFEFF)" : "none", border: `1.5px solid ${open ? "rgba(13,148,136,0.3)" : "#E2E8F0"}`, borderRadius: 10, cursor: "pointer", padding: "9px", alignItems: "center", justifyContent: "center", transition: "all 0.22s" }}
               aria-label="Toggle menu"
             >
               {open
