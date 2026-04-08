@@ -39,48 +39,163 @@ export default async function GalleryPage() {
         </div>
       </section>
 
-      {/* GALLERY GRID */}
-      <section style={{ background: "white", padding: "96px 0" }}>
+      {/* ── FOUNDER SECTION ── */}
+      <section style={{ background: "#F8FAFD", padding: "80px 0" }}>
         <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>👩‍⚕️ Our Founder</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>
+              Meet the Founder
+            </h2>
+            <div className="divider-teal" style={{ margin: "0 auto" }} />
+          </div>
 
-          <style>{`
-            .gallery-masonry {
-              columns: 3;
-              column-gap: 20px;
-            }
-            .gallery-item {
-              break-inside: avoid;
-              margin-bottom: 20px;
-              border-radius: 16px;
-              overflow: hidden;
-              border: 1.5px solid #E2E8F0;
-              position: relative;
-              background: #F8FAFD;
-              cursor: pointer;
-            }
-            .gallery-item img {
-              width: 100%;
-              display: block;
-              transition: transform 0.4s ease;
-            }
-            .gallery-item:hover img { transform: scale(1.05); }
-            .gallery-overlay {
-              position: absolute; inset: 0;
-              background: linear-gradient(to top, rgba(11,37,69,0.6) 0%, transparent 60%);
-              opacity: 0; transition: opacity 0.3s;
-              display: flex; align-items: flex-end; padding: 20px;
-            }
-            .gallery-item:hover .gallery-overlay { opacity: 1; }
-            .gallery-caption {
-              font-family: 'Plus Jakarta Sans', sans-serif;
-              font-weight: 600; font-size: 0.88rem;
-              color: white;
-            }
-            @media (max-width: 900px) { .gallery-masonry { columns: 2; } }
-            @media (max-width: 560px) { .gallery-masonry { columns: 1; } }
-          `}</style>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
+            {/* Founder photo card */}
+            <div style={{ maxWidth: 380, width: "100%" }}>
+              <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 24px 64px rgba(11,37,69,0.16)", aspectRatio: "3/4", position: "relative" }}>
+                <img
+                  src="/images/founder.jpeg"
+                  alt="Dorothy Ohenewa – Founder"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+                />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(11,37,69,0.7) 0%, transparent 55%)" }} />
+                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "28px 24px" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.9rem", fontWeight: 700, color: "white", lineHeight: 1.1 }}>Dorothy Ohenewa</div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "0.82rem", color: "#5EEAD4", fontWeight: 600, marginTop: 6 }}>
+                    Registered Nurse · Social Worker · Counsellor/Therapist
+                  </div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "0.78rem", color: "rgba(255,255,255,0.7)", marginTop: 4 }}>
+                    Founder & Director — OHQHS
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          {photos && photos.length > 0 ? (
+      {/* ── STAFF — CARERS SECTION ── */}
+      <section style={{ background: "white", padding: "80px 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>👥 Our Team</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>
+              Staff — Carers
+            </h2>
+            <div className="divider-teal" style={{ margin: "0 auto 16px" }} />
+            <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.96rem", maxWidth: 520, margin: "0 auto" }}>
+              Our compassionate, trained carers are at the heart of everything we do — delivering professional, dignified care every day.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+            {[
+              { role: "Senior Carer", icon: "🏅", color: "linear-gradient(135deg,#0D9488,#14B8A6)" },
+              { role: "Support Worker", icon: "🤝", color: "linear-gradient(135deg,#3B82F6,#6366F1)" },
+              { role: "Domiciliary Care Professional", icon: "🏡", color: "linear-gradient(135deg,#F59E0B,#F97316)" },
+            ].map((member, i) => (
+              <div key={i} className="card-lift" style={{ borderRadius: 20, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0", boxShadow: "0 4px 24px rgba(11,37,69,0.07)" }}>
+                <div style={{ background: member.color, height: 200, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem" }}>
+                  {member.icon}
+                </div>
+                <div style={{ padding: "20px 24px 24px", textAlign: "center" }}>
+                  <div style={{ width: 42, height: 4, borderRadius: 4, background: "linear-gradient(135deg,#0D9488,#38BDF8)", margin: "0 auto 14px" }} />
+                  <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "0.9rem", color: "#0D9488", fontWeight: 700, margin: 0 }}>{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CLIENTS WITH CARER SUPPORT SECTION ── */}
+      <section style={{ background: "#F8FAFD", padding: "80px 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>💛 Care in Action</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>
+              Clients with a Carer Supporting
+            </h2>
+            <div className="divider-teal" style={{ margin: "0 auto 16px" }} />
+            <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.96rem", maxWidth: 520, margin: "0 auto" }}>
+              Real moments of care, companionship, and connection — our carers supporting clients in the comfort of their own homes.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+            {[
+              { caption: "Medication & Daily Routine Support", icon: "💊", grad: "linear-gradient(135deg,#EEF6FF,#DCFCE7)" },
+              { caption: "Companionship & Emotional Support", icon: "🫶", grad: "linear-gradient(135deg,#FDF4FF,#FCE7F3)" },
+              { caption: "Mobility & Physical Assistance", icon: "🦽", grad: "linear-gradient(135deg,#FFFBEB,#FEF3C7)" },
+            ].map((item, i) => (
+              <div key={i} className="card-lift" style={{ borderRadius: 20, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0" }}>
+                <div style={{ height: 220, background: item.grad, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12 }}>
+                  <div style={{ fontSize: "4rem" }}>{item.icon}</div>
+                </div>
+                <div style={{ padding: "20px 24px 24px" }}>
+                  <div style={{ width: 42, height: 4, borderRadius: 4, background: "linear-gradient(135deg,#0D9488,#38BDF8)", marginBottom: 14 }} />
+                  <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: "0.9rem", color: "#0B2545", fontWeight: 600, margin: 0 }}>{item.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CLIENTS SECTION ── */}
+      <section style={{ background: "white", padding: "80px 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>🌟 Our Clients</span>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16, marginBottom: 12 }}>
+              Clients
+            </h2>
+            <div className="divider-teal" style={{ margin: "0 auto 16px" }} />
+            <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.96rem", maxWidth: 560, margin: "0 auto" }}>
+              We are proud to support individuals with diverse care needs — each person treated with the dignity, respect, and compassion they deserve.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+            {[
+              { label: "Elderly Individuals", icon: "👴", desc: "Supporting older adults to live independently in their own homes with dignity.", color: "#0D9488" },
+              { label: "People with Disabilities", icon: "♿", desc: "Empowering individuals with physical or learning disabilities to thrive.", color: "#6366F1" },
+              { label: "Those with Chronic Illness", icon: "💙", desc: "Caring for clients managing long-term conditions with specialised support.", color: "#F59E0B" },
+              { label: "Post-Hospital Patients", icon: "🏥", desc: "Helping clients safely transition from hospital back to their home environment.", color: "#EC4899" },
+            ].map((c, i) => (
+              <div key={i} className="card-lift" style={{ borderRadius: 20, background: "white", border: "1.5px solid #E2E8F0", padding: "32px 28px", textAlign: "center" }}>
+                <div style={{ fontSize: "3rem", marginBottom: 16 }}>{c.icon}</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 700, color: "#0B2545", marginBottom: 10 }}>{c.label}</h3>
+                <div style={{ width: 40, height: 3, background: c.color, borderRadius: 4, margin: "0 auto 14px" }} />
+                <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "0.88rem", lineHeight: 1.7, margin: 0 }}>{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DYNAMIC GALLERY GRID */}
+      {photos && photos.length > 0 && (
+        <section style={{ background: "#F8FAFD", padding: "96px 0" }}>
+          <div className="container">
+            <div style={{ textAlign: "center", marginBottom: 56 }}>
+              <span className="section-label" style={{ marginBottom: 16, display: "inline-flex" }}>📸 Photo Gallery</span>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", marginTop: 16 }}>
+                Photo Moments
+              </h2>
+            </div>
+            <style>{`
+              .gallery-masonry { columns: 3; column-gap: 20px; }
+              .gallery-item { break-inside: avoid; margin-bottom: 20px; border-radius: 16px; overflow: hidden; border: 1.5px solid #E2E8F0; position: relative; background: #F8FAFD; cursor: pointer; }
+              .gallery-item img { width: 100%; display: block; transition: transform 0.4s ease; }
+              .gallery-item:hover img { transform: scale(1.05); }
+              .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,37,69,0.6) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 20px; }
+              .gallery-item:hover .gallery-overlay { opacity: 1; }
+              .gallery-caption { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 0.88rem; color: white; }
+              @media (max-width: 900px) { .gallery-masonry { columns: 2; } }
+              @media (max-width: 560px) { .gallery-masonry { columns: 1; } }
+            `}</style>
             <div className="gallery-masonry">
               {photos.map((photo: any) => (
                 <div key={photo.id} className="gallery-item">
@@ -93,27 +208,9 @@ export default async function GalleryPage() {
                 </div>
               ))}
             </div>
-          ) : (
-            <div style={{ textAlign: "center", padding: "80px 24px" }}>
-              <div style={{ width: 90, height: 90, borderRadius: "50%", background: "#F0FDFA", margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#0D9488" strokeWidth="1.8"/><circle cx="8.5" cy="8.5" r="1.5" stroke="#0D9488" strokeWidth="1.8"/><polyline points="21,15 16,10 5,21" stroke="#0D9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.9rem", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>Gallery Coming Soon</h3>
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "1rem", marginBottom: 28 }}>
-                We're adding photos to share our care community with you. Check back soon!
-              </p>
-              <Link href="/contact" style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                background: "linear-gradient(135deg,#0B2545,#163a6b)", color: "white",
-                padding: "14px 28px", borderRadius: 12, textDecoration: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.93rem",
-              }}>
-                Get In Touch
-              </Link>
-            </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </>

@@ -37,7 +37,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="container" style={{ position:"relative", zIndex:1, paddingTop:80, paddingBottom:60, width:"100%" }}>
-        <div className="hero-text-block">
+        <div className="hero-text-block" style={{ textAlign: "center" }}>
 
           {/* Heading — first */}
           <h1 className="anim-fade-up hero-h1-main" style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
@@ -61,18 +61,18 @@ export default function Hero() {
               WebkitTextFillColor:"transparent",
               backgroundClip:"text",
             }}>
-              Othdabere High Quality Healthcare Services{" "}
+              OTHDABERE HIGH QUALITY HEALTHCARE SERVICES{" "}
               <span style={{ fontWeight:700, fontSize:"0.88em", opacity:0.9 }}>(OHQHS)</span>
             </span>
           </div>
 
           {/* Subtext — second */}
-          <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600 }}>
+          <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600, margin:"0 auto 28px" }}>
             A Voice for the Voiceless, Care & Dignity for the Soul
           </p>
 
           {/* UK & Ghana badge — third */}
-          <div className="anim-fade-up delay-200" style={{ marginBottom:36 }}>
+          <div className="anim-fade-up delay-200" style={{ marginBottom:36, display:"flex", justifyContent:"center" }}>
             <span style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(13,148,136,0.18)", border:"1px solid rgba(20,184,166,0.38)", color:"#5EEAD4", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"0.72rem", letterSpacing:"0.14em", textTransform:"uppercase", padding:"7px 16px", borderRadius:100 }}>
               <span style={{ width:7, height:7, borderRadius:"50%", background:"#2DD4BF", display:"inline-block", animation:"pulseRing 2s ease-in-out infinite" }} />
               Professional Domiciliary Care based in UK &amp; GHANA
@@ -80,7 +80,7 @@ export default function Hero() {
           </div>
 
           {/* CTAs */}
-          <div className="anim-fade-up delay-300 hero-cta-row" style={{ display:"flex", flexWrap:"wrap", gap:12, marginBottom:44 }}>
+          <div className="anim-fade-up delay-300 hero-cta-row" style={{ display:"flex", flexWrap:"wrap", gap:12, marginBottom:44, justifyContent:"center" }}>
             <Link href="/contact" className="btn-primary" style={{ textDecoration:"none", fontSize:"1rem", padding:"16px 32px" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               Get Care Today
@@ -92,7 +92,7 @@ export default function Hero() {
           </div>
 
           {/* Trust badges */}
-          <div className="anim-fade-up delay-400" style={{ display:"flex", flexWrap:"wrap", gap:8 }}>
+          <div className="anim-fade-up delay-400" style={{ display:"flex", flexWrap:"wrap", gap:8, justifyContent:"center" }}>
             {badges.map(b => (
               <span key={b} style={{ display:"inline-flex", alignItems:"center", gap:6, background:"rgba(255,255,255,0.1)", border:"1px solid rgba(255,255,255,0.18)", color:"rgba(255,255,255,0.88)", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:500, fontSize:"0.77rem", padding:"6px 13px", borderRadius:100 }}>
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2DD4BF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>

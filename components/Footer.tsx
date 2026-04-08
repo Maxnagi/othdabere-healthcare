@@ -36,7 +36,7 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem" }}>Othdabere High Quality</div>
-                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, fontSize: "0.7rem", color: "rgba(255,255,255,0.55)" }}>Healthcare Services Ltd</div>
+                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem", color: "white" }}>Healthcare Services Ltd</div>
               </div>
             </div>
 

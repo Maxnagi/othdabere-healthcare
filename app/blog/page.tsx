@@ -35,10 +35,139 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      {/* POSTS */}
-      <section style={{ padding: "100px 0", background: "white" }}>
+      {/* ── WE ARE RECRUITING — STAFF ── */}
+      <section style={{ padding: "80px 0", background: "white" }}>
         <div className="container">
-          {posts && posts.length > 0 ? (
+          {/* Staff Recruitment Card */}
+          <div style={{
+            background: "linear-gradient(135deg, #0B2545 0%, #163a6b 50%, #0D9488 100%)",
+            borderRadius: 28,
+            padding: "56px 48px",
+            marginBottom: 40,
+            position: "relative",
+            overflow: "hidden",
+          }}>
+            {/* Decorative orb */}
+            <div style={{ position: "absolute", top: -60, right: -60, width: 280, height: 280, borderRadius: "50%", background: "rgba(45,212,191,0.12)", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", bottom: -40, left: -40, width: 200, height: 200, borderRadius: "50%", background: "rgba(99,102,241,0.1)", pointerEvents: "none" }} />
+
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(45,212,191,0.18)", border: "1px solid rgba(45,212,191,0.35)", borderRadius: 50, padding: "7px 16px", marginBottom: 24 }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#2DD4BF", display: "inline-block", animation: "pulseRing 2s ease-in-out infinite" }} />
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#2DD4BF" }}>Now Hiring</span>
+              </div>
+
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "white", lineHeight: 1.15, marginBottom: 20, maxWidth: 640 }}>
+                We Are Recruiting for Staff
+              </h2>
+              <div style={{ width: 56, height: 4, background: "linear-gradient(90deg, #38BDF8, #2DD4BF)", borderRadius: 2, marginBottom: 28 }} />
+
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "rgba(255,255,255,0.82)", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: 680, marginBottom: 36 }}>
+                Othdabere High Quality Healthcare Services Ltd is actively recruiting dedicated, compassionate professionals to join our growing team. We are looking for individuals who share our values of dignity, respect, and person-centred care to help us make a real difference in our communities.
+              </p>
+
+              {/* Role chips */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 36 }}>
+                {[
+                  { label: "Doctors", icon: "🩺" },
+                  { label: "Nurses", icon: "👩‍⚕️" },
+                  { label: "Counsellors", icon: "🧠" },
+                  { label: "Administrators", icon: "💼" },
+                  { label: "Carers", icon: "🤝" },
+                  { label: "Cleaners", icon: "🧹" },
+                ].map((role) => (
+                  <span key={role.label} style={{
+                    display: "inline-flex", alignItems: "center", gap: 8,
+                    background: "rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    borderRadius: 50, padding: "10px 20px",
+                    fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.88rem",
+                    color: "white",
+                  }}>
+                    <span>{role.icon}</span> {role.label}
+                  </span>
+                ))}
+              </div>
+
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "rgba(255,255,255,0.72)", fontSize: "0.95rem", lineHeight: 1.75, maxWidth: 680, marginBottom: 32 }}>
+                Whether you are a seasoned healthcare professional or looking to begin a rewarding career in care, we welcome applications from all backgrounds. We offer competitive pay, ongoing training, a supportive working environment, and the opportunity to truly change lives.
+              </p>
+
+              <a href="/careers" style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: "linear-gradient(135deg, #0D9488, #0891B2)",
+                color: "white", padding: "16px 32px", borderRadius: 50,
+                fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.95rem",
+                textDecoration: "none", boxShadow: "0 8px 24px rgba(13,148,136,0.4)",
+              }}>
+                Apply Now
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Client Recruitment Card */}
+          <div style={{
+            background: "linear-gradient(135deg, #F0FDFA 0%, #EEF6FF 100%)",
+            border: "2px solid #0D948822",
+            borderRadius: 28,
+            padding: "56px 48px",
+            marginBottom: 64,
+            position: "relative",
+            overflow: "hidden",
+          }}>
+            <div style={{ position: "absolute", top: -50, right: -50, width: 240, height: 240, borderRadius: "50%", background: "rgba(13,148,136,0.06)", pointerEvents: "none" }} />
+
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(13,148,136,0.12)", border: "1px solid rgba(13,148,136,0.3)", borderRadius: 50, padding: "7px 16px", marginBottom: 24 }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#0D9488", display: "inline-block" }} />
+                <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#0D9488" }}>Registering Clients</span>
+              </div>
+
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#0B2545", lineHeight: 1.15, marginBottom: 20, maxWidth: 640 }}>
+                We Are Recruiting & Registering Clients
+              </h2>
+              <div style={{ width: 56, height: 4, background: "linear-gradient(90deg, #0D9488, #38BDF8)", borderRadius: 2, marginBottom: 28 }} />
+
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#334155", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: 680, marginBottom: 28 }}>
+                We are currently recruiting and registering clients who need support with their daily care needs — delivered in the comfort of their own homes or personal spaces. Our mission is to provide compassionate, person-centred domiciliary care that allows individuals to live independently, safely, and with dignity.
+              </p>
+
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#334155", fontSize: "0.95rem", lineHeight: 1.8, maxWidth: 680, marginBottom: 36 }}>
+                Whether you or a loved one needs assistance with daily routines, medication management, companionship, personal care, or specialist support, our experienced team is here to help. We work closely with clients, families, and healthcare professionals to create tailored care plans that truly meet individual needs.
+              </p>
+
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 36 }}>
+                {["Personal Care", "Medication Support", "Companionship", "Meal Preparation", "Mobility Assistance", "Specialist Care"].map((s) => (
+                  <span key={s} style={{
+                    display: "inline-flex", alignItems: "center", gap: 6,
+                    background: "white",
+                    border: "1.5px solid #0D948844",
+                    borderRadius: 50, padding: "9px 18px",
+                    fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, fontSize: "0.85rem",
+                    color: "#0D9488",
+                  }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0D9488" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    {s}
+                  </span>
+                ))}
+              </div>
+
+              <a href="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: "linear-gradient(135deg, #0B2545, #163a6b)",
+                color: "white", padding: "16px 32px", borderRadius: 50,
+                fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "0.95rem",
+                textDecoration: "none", boxShadow: "0 8px 24px rgba(11,37,69,0.2)",
+              }}>
+                Register as a Client
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Dynamic blog posts if any */}
+          {posts && posts.length > 0 && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 28 }}>
               {posts?.map((post: any) => (
                 <article key={post.id} className="card-lift" style={{
@@ -75,14 +204,6 @@ export default async function BlogPage() {
                   </div>
                 </article>
               ))}
-            </div>
-          ) : (
-            <div style={{ textAlign: "center", padding: "80px 24px" }}>
-              <div style={{ width: 80, height: 80, borderRadius: "50%", background: "#F0FDFA", margin: "0 auto 20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#0D9488" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </div>
-              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 700, color: "#0B2545", marginBottom: 12 }}>Posts Coming Soon</h3>
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#64748B", fontSize: "1rem" }}>We're working on healthcare insights and news to share with you.</p>
             </div>
           )}
         </div>

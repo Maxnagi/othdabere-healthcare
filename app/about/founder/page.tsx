@@ -74,7 +74,7 @@ export default function FounderPage() {
               Dorothy <span className="text-shimmer">Ohenewa</span>
             </h1>
             <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", color: "rgba(255,255,255,0.78)", fontSize: "1.1rem", maxWidth: 560, lineHeight: 1.72 }}>
-              Registered Nurse · Social Worker · Founder & Director of OHQHS
+              Registered Nurse · Social Worker · Counsellor/Therapist · Founder & Director of OHQHS
             </p>
           </ScrollReveal>
         </div>
