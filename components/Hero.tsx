@@ -1,127 +1,269 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
-const statCards = [
-  { value: "100+", label: "Clients Supported",  color: "#0D9488" },
-  { value: "25+",  label: "Care Professionals",  color: "#6366F1" },
-  { value: "3+",   label: "Years Experience",    color: "#F59E0B" },
-  { value: "98%",  label: "Satisfaction Rate",   color: "#EC4899" },
+const slides = [
+  { src: "/images/hero-home.jpg",    alt: "Compassionate home care" },
+  { src: "/images/care1.jpg",        alt: "Carer supporting client" },
+  { src: "/images/homecare1.jpg",    alt: "Domiciliary care at home" },
+  { src: "/images/hero-care.jpg",    alt: "Healthcare professional" },
 ]
 
-const badges = ["CQC Registered","DBS Checked Staff","24/7 Support","Personalised Plans"]
+const badges = ["CQC Registered", "DBS Checked Staff", "24/7 Support", "Personalised Plans"]
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null)
+  const [current, setCurrent] = useState(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setCurrent(c => (c + 1) % slides.length)
+    }, 4500)
+  }
 
   useEffect(() => {
-    const onScroll = () => {
-      const el = heroRef.current?.querySelector<HTMLElement>(".hero-bg")
-      if (el) el.style.transform = `translateY(${window.scrollY * 0.28}px)`
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    startTimer()
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
   }, [])
 
   return (
-    <section ref={heroRef} style={{ position:"relative", minHeight:"100vh", display:"flex", alignItems:"center", overflow:"hidden" }}>
+    <>
+      {/* ── HERO ── */}
+      <section style={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        overflow: "hidden",
+        background: "#061428",
+      }}>
 
-      {/* BG */}
-      <div className="hero-bg" style={{ position:"absolute", inset:"-15% 0 0 0", backgroundImage:"url('/images/hero-home.jpg')", backgroundSize:"cover", backgroundPosition:"center", willChange:"transform" }} />
-      <div className="hero-overlay" style={{ position:"absolute", inset:0 }} />
-
-      {/* Orbs */}
-      <div style={{ position:"absolute", top:"8%", right:"12%", width:340, height:340, borderRadius:"50%", background:"radial-gradient(circle, rgba(13,148,136,0.18) 0%, transparent 70%)", animation:"float 6s ease-in-out infinite", pointerEvents:"none" }} />
-      <div style={{ position:"absolute", bottom:"20%", left:"6%", width:220, height:220, borderRadius:"50%", background:"radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)", animation:"float 8s ease-in-out infinite 2s", pointerEvents:"none" }} />
-
-      {/* Content */}
-      <div className="container" style={{ position:"relative", zIndex:1, paddingTop:80, paddingBottom:60, width:"100%" }}>
-        <div className="hero-text-block" style={{ textAlign: "center" }}>
-
-          {/* Heading — first */}
-          <h1 className="anim-fade-up hero-h1-main" style={{ fontFamily:"'Cormorant Garamond',serif", fontWeight:700, color:"white", lineHeight:1.08, marginBottom:22 }}>
-            Compassionate Care{" "}
-            <span style={{ background:"linear-gradient(135deg,#38BDF8,#2DD4BF,#10B981)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
-              in the Comfort
-            </span>{" "}
-            of Your Home
-          </h1>
-
-          {/* OHQHS brand line — between heading and slogan */}
-          <div className="anim-fade-up delay-75" style={{ marginBottom:22 }}>
-            <span style={{
-              display:"inline-block",
-              fontFamily:"'Plus Jakarta Sans',sans-serif",
-              fontWeight:800,
-              fontSize:"clamp(1rem,2.2vw,1.32rem)",
-              letterSpacing:"0.01em",
-              background:"linear-gradient(135deg,#38BDF8 0%,#2DD4BF 50%,#10B981 100%)",
-              WebkitBackgroundClip:"text",
-              WebkitTextFillColor:"transparent",
-              backgroundClip:"text",
-            }}>
-              OTHDABERE HIGH QUALITY HEALTHCARE SERVICES{" "}
-              <span style={{ fontWeight:700, fontSize:"0.88em", opacity:0.9 }}>(OHQHS)</span>
-            </span>
-          </div>
-
-          {/* Subtext — second */}
-          <p className="anim-fade-up delay-100" style={{ fontFamily:"'Plus Jakarta Sans',sans-serif", fontSize:"clamp(0.95rem,2vw,1.18rem)", color:"rgba(255,255,255,0.78)", lineHeight:1.74, marginBottom:28, maxWidth:600, margin:"0 auto 28px" }}>
-            A Voice for the Voiceless, Care & Dignity for the Soul
-          </p>
-
-          {/* UK & Ghana badge — third */}
-          <div className="anim-fade-up delay-200" style={{ marginBottom:36, display:"flex", justifyContent:"center" }}>
-            <span style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(13,148,136,0.18)", border:"1px solid rgba(20,184,166,0.38)", color:"#5EEAD4", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:700, fontSize:"0.72rem", letterSpacing:"0.14em", textTransform:"uppercase", padding:"7px 16px", borderRadius:100 }}>
-              <span style={{ width:7, height:7, borderRadius:"50%", background:"#2DD4BF", display:"inline-block", animation:"pulseRing 2s ease-in-out infinite" }} />
-              Professional Domiciliary Care based in UK &amp; GHANA
-            </span>
-          </div>
-
-          {/* CTAs */}
-          <div className="anim-fade-up delay-300 hero-cta-row" style={{ display:"flex", flexWrap:"wrap", gap:12, marginBottom:44, justifyContent:"center" }}>
-            <Link href="/contact" className="btn-primary" style={{ textDecoration:"none", fontSize:"1rem", padding:"16px 32px" }}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              Get Care Today
-            </Link>
-            <Link href="/services" className="btn-secondary" style={{ textDecoration:"none", fontSize:"1rem", padding:"15px 32px" }}>
-              Explore Services
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </Link>
-          </div>
-
-          {/* Trust badges */}
-          <div className="anim-fade-up delay-400" style={{ display:"flex", flexWrap:"wrap", gap:8, justifyContent:"center" }}>
-            {badges.map(b => (
-              <span key={b} style={{ display:"inline-flex", alignItems:"center", gap:6, background:"rgba(255,255,255,0.1)", border:"1px solid rgba(255,255,255,0.18)", color:"rgba(255,255,255,0.88)", fontFamily:"'Plus Jakarta Sans',sans-serif", fontWeight:500, fontSize:"0.77rem", padding:"6px 13px", borderRadius:100 }}>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2DD4BF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                {b}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Stat cards — controlled entirely by CSS ── */}
-        <div className="anim-fade-up delay-500 hero-stat-grid">
-          {statCards.map((s, i) => (
-            <div key={i} className="stat-card"
-              onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background="rgba(255,255,255,0.16)"; (e.currentTarget as HTMLDivElement).style.transform="translateY(-4px)" }}
-              onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background="rgba(255,255,255,0.09)"; (e.currentTarget as HTMLDivElement).style.transform="none" }}
-            >
-              <div className="stat-value" style={{ color: s.color }}>{s.value}</div>
-              <div className="stat-label">{s.label}</div>
-            </div>
+        {/* Slideshow images — RIGHT side panel, full bleed */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+        }}>
+          {slides.map((slide, i) => (
+            <div
+              key={i}
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundImage: `url('${slide.src}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                opacity: i === current ? 1 : 0,
+                transition: "opacity 1.1s ease-in-out",
+              }}
+            />
           ))}
+          {/* Gradient: strong dark on left for text, fades to near-transparent on right */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to right, rgba(6,20,40,0.96) 0%, rgba(6,20,40,0.88) 38%, rgba(6,20,40,0.55) 58%, rgba(6,20,40,0.18) 78%, rgba(6,20,40,0.04) 100%)",
+            zIndex: 1,
+          }} />
         </div>
-      </div>
 
-      {/* Bottom wave */}
-      <div style={{ position:"absolute", bottom:-1, left:0, right:0, lineHeight:0, pointerEvents:"none" }}>
-        <svg viewBox="0 0 1440 56" fill="none" preserveAspectRatio="none" style={{ width:"100%", height:56 }}>
-          <path d="M0 56L1440 56L1440 28C1200 56 960 0 720 20C480 40 240 8 0 28L0 56Z" fill="#F8FAFD"/>
-        </svg>
-      </div>
-    </section>
+        {/* Content */}
+        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: 100, paddingBottom: 80, width: "100%" }}>
+          <div style={{ maxWidth: 620 }}>
+
+            {/* Brand pill */}
+            <div className="anim-fade-up" style={{ marginBottom: 24 }}>
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "rgba(13,148,136,0.18)",
+                border: "1px solid rgba(20,184,166,0.38)",
+                color: "#5EEAD4",
+                fontFamily: "'Plus Jakarta Sans',sans-serif",
+                fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.14em",
+                textTransform: "uppercase", padding: "7px 16px", borderRadius: 100,
+              }}>
+                <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#2DD4BF", display: "inline-block", animation: "pulseRing 2s ease-in-out infinite" }} />
+                Domiciliary Care · UK &amp; Ghana
+              </span>
+            </div>
+
+            {/* Main heading */}
+            <h1 className="anim-fade-up delay-75" style={{
+              fontFamily: "'Cormorant Garamond',serif",
+              fontWeight: 700,
+              color: "white",
+              lineHeight: 1.06,
+              marginBottom: 20,
+              fontSize: "clamp(2.6rem,5.5vw,4.2rem)",
+            }}>
+              Compassionate Care{" "}
+              <span style={{
+                background: "linear-gradient(135deg,#38BDF8,#2DD4BF,#10B981)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                in the Comfort
+              </span>{" "}
+              of Your Home
+            </h1>
+
+            {/* Company name line */}
+            <div className="anim-fade-up delay-100" style={{ marginBottom: 18 }}>
+              <span style={{
+                display: "inline-block",
+                fontFamily: "'Plus Jakarta Sans',sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(0.72rem,1.4vw,0.92rem)",
+                letterSpacing: "0.04em",
+                background: "linear-gradient(135deg,#38BDF8 0%,#2DD4BF 50%,#10B981 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textTransform: "uppercase",
+              }}>
+                OTHDABERE HIGH QUALITY HEALTHCARE SERVICES LTD (OHQHS)
+              </span>
+            </div>
+
+            {/* Tagline */}
+            <p className="anim-fade-up delay-150" style={{
+              fontFamily: "'Plus Jakarta Sans',sans-serif",
+              fontSize: "clamp(0.92rem,1.6vw,1.05rem)",
+              color: "rgba(255,255,255,0.72)",
+              lineHeight: 1.72,
+              marginBottom: 32,
+              maxWidth: 520,
+            }}>
+              A Voice for the Voiceless — delivering dignity, compassion and professional care for vulnerable individuals in their own homes.
+            </p>
+
+            {/* CTA */}
+            <div className="anim-fade-up delay-200" style={{ marginBottom: 36 }}>
+              <Link href="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: 9,
+                background: "linear-gradient(135deg,#0D9488,#0891B2)",
+                color: "white",
+                padding: "13px 28px",
+                borderRadius: 50,
+                fontFamily: "'Plus Jakarta Sans',sans-serif",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                textDecoration: "none",
+                boxShadow: "0 6px 22px rgba(13,148,136,0.42)",
+                transition: "transform 0.2s, box-shadow 0.2s",
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 28px rgba(13,148,136,0.55)" }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 6px 22px rgba(13,148,136,0.42)" }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Get Started
+              </Link>
+            </div>
+
+            {/* Trust badges */}
+            <div className="anim-fade-up delay-250" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {badges.map(b => (
+                <span key={b} style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  background: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  color: "rgba(255,255,255,0.82)",
+                  fontFamily: "'Plus Jakarta Sans',sans-serif",
+                  fontWeight: 500, fontSize: "0.74rem",
+                  padding: "5px 12px", borderRadius: 100,
+                }}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2DD4BF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {b}
+                </span>
+              ))}
+            </div>
+
+            {/* Slide dots */}
+            <div style={{ display: "flex", gap: 8, marginTop: 40 }}>
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setCurrent(i); startTimer() }}
+                  aria-label={`Slide ${i + 1}`}
+                  style={{
+                    width: i === current ? 28 : 8,
+                    height: 8,
+                    borderRadius: 4,
+                    background: i === current ? "#2DD4BF" : "rgba(255,255,255,0.28)",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition: "all 0.3s ease",
+                  }}
+                />
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom wave */}
+        <div style={{ position: "absolute", bottom: -1, left: 0, right: 0, lineHeight: 0, pointerEvents: "none", zIndex: 3 }}>
+          <svg viewBox="0 0 1440 56" fill="none" preserveAspectRatio="none" style={{ width: "100%", height: 56 }}>
+            <path d="M0 56L1440 56L1440 28C1200 56 960 0 720 20C480 40 240 8 0 28L0 56Z" fill="#F8FAFD"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* ── STATS STRIP (below hero) ── */}
+      <section style={{ background: "#F8FAFD", padding: "0" }}>
+        <div style={{
+          background: "white",
+          borderBottom: "1px solid #E2E8F0",
+          boxShadow: "0 4px 24px rgba(11,37,69,0.06)",
+        }}>
+          <div className="container">
+            <div className="stats-strip-grid" style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: 0,
+            }}>
+              {[
+                { value: "100+", label: "Clients Supported",   color: "#0D9488",  icon: "🫶" },
+                { value: "25+",  label: "Care Professionals",  color: "#6366F1",  icon: "👩‍⚕️" },
+                { value: "3+",   label: "Years Experience",    color: "#F59E0B",  icon: "⭐" },
+                { value: "98%",  label: "Satisfaction Rate",   color: "#EC4899",  icon: "✅" },
+              ].map((s, i, arr) => (
+                <div key={i} style={{
+                  padding: "32px 24px",
+                  textAlign: "center",
+                  borderRight: i < arr.length - 1 ? "1px solid #E2E8F0" : "none",
+                  transition: "background 0.2s",
+                }}
+                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = "#F8FAFD"}
+                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = "white"}
+                >
+                  <div style={{ fontSize: "1.5rem", marginBottom: 6 }}>{s.icon}</div>
+                  <div style={{
+                    fontFamily: "'Cormorant Garamond',serif",
+                    fontWeight: 700,
+                    fontSize: "2.4rem",
+                    color: s.color,
+                    lineHeight: 1,
+                    marginBottom: 6,
+                  }}>{s.value}</div>
+                  <div style={{
+                    fontFamily: "'Plus Jakarta Sans',sans-serif",
+                    fontSize: "0.78rem",
+                    fontWeight: 600,
+                    color: "#64748B",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }

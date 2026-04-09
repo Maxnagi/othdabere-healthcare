@@ -401,3 +401,21 @@ img { max-width: 100%; display: block; height: auto; }
     padding: 76px 12px 20px !important;
   }
 }
+
+/* ── Stats strip responsive ── */
+.stats-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 768px) {
+  .stats-strip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .stats-strip-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Hero slide dots ── */
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.4); opacity: 0.6; }
+}
