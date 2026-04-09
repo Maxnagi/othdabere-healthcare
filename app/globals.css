@@ -402,17 +402,8 @@ img { max-width: 100%; display: block; height: auto; }
   }
 }
 
-/* ── Stats strip responsive ── */
-.stats-strip-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-@media (max-width: 768px) {
-  .stats-strip-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .stats-strip-grid { grid-template-columns: repeat(2, 1fr); }
-}
+/* ── Stats strip — always 4 columns, compact via clamp() ── */
+/* No media-query overrides needed; clamp() handles sizing at all breakpoints */
 
 /* ── Hero slide dots ── */
 @keyframes pulseRing {
