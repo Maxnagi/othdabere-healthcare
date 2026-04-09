@@ -99,9 +99,7 @@ export default async function GalleryPage() {
               <div key={i} className="card-lift" style={{ borderRadius: 20, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0", boxShadow: "0 4px 24px rgba(11,37,69,0.07)" }}>
                 <div style={{ height: 240, overflow: "hidden", position: "relative" }}>
                   <img src={m.src} alt={m.role}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block", transition: "transform 0.4s ease" }}
-                    onMouseOver={e => (e.currentTarget.style.transform = "scale(1.05)")}
-                    onMouseOut={e => (e.currentTarget.style.transform = "scale(1)")}
+                    className="card-img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
                   />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(11,37,69,0.35) 0%,transparent 55%)" }} />
                 </div>
@@ -137,9 +135,7 @@ export default async function GalleryPage() {
               <div key={i} className="card-lift" style={{ borderRadius: 20, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0" }}>
                 <div style={{ height: 240, overflow: "hidden", position: "relative" }}>
                   <img src={item.src} alt={item.caption}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block", transition: "transform 0.4s ease" }}
-                    onMouseOver={e => (e.currentTarget.style.transform = "scale(1.05)")}
-                    onMouseOut={e => (e.currentTarget.style.transform = "scale(1)")}
+                    className="card-img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
                   />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(11,37,69,0.35) 0%,transparent 55%)" }} />
                 </div>
@@ -176,9 +172,7 @@ export default async function GalleryPage() {
               <div key={i} className="card-lift" style={{ borderRadius: 20, overflow: "hidden", background: "white", border: "1.5px solid #E2E8F0" }}>
                 <div style={{ height: 220, overflow: "hidden", position: "relative" }}>
                   <img src={c.src} alt={c.label}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block", transition: "transform 0.4s ease" }}
-                    onMouseOver={e => (e.currentTarget.style.transform = "scale(1.05)")}
-                    onMouseOut={e => (e.currentTarget.style.transform = "scale(1)")}
+                    className="card-img-zoom" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }}
                   />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(11,37,69,0.4) 0%,transparent 55%)" }} />
                 </div>
@@ -225,6 +219,8 @@ export default async function GalleryPage() {
             </div>
             <style>{`
               .gallery-masonry{columns:3;column-gap:20px}
+              .card-img-zoom{transition:transform 0.4s ease}
+              .card-img-zoom:hover{transform:scale(1.05)}
               .gallery-item{break-inside:avoid;margin-bottom:20px;border-radius:16px;overflow:hidden;border:1.5px solid #E2E8F0;position:relative;background:#F8FAFD;cursor:pointer}
               .gallery-item img{width:100%;display:block;transition:transform 0.4s ease}
               .gallery-item:hover img{transform:scale(1.05)}
