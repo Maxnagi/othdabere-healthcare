@@ -119,15 +119,15 @@ export default function Navbar() {
       }}>
         <div style={{
           maxWidth: 1280, margin: "0 auto", padding: "0 24px",
-          display: "flex", alignItems: "center", justifyContent: "space-between", height: 84,
+          display: "flex", alignItems: "center", justifyContent: "space-between", height: 160,
         }}>
 
           {/* Logo */}
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", flexShrink: 0 }}>
-            <img src="/logo.png" alt="Othdabere Healthcare" style={{ height: 68, width: "auto", objectFit: "contain", display: "block" }} />
+            <img src="/logo.png" alt="Othdabere Healthcare" style={{ height: 136, width: "auto", objectFit: "contain", display: "block" }} />
             <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25" }}>Othdabere High Quality</div>
-              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25" }}>Healthcare Services Ltd</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25", textTransform: "uppercase" }}>OTHDABERE HIGH QUALITY</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.85rem", background: "linear-gradient(135deg,#0D9488,#14B8A6,#38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1.25", textTransform: "uppercase" }}>HEALTHCARE SERVICES LTD</div>
             </div>
           </Link>
 

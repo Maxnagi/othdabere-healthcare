@@ -88,7 +88,7 @@ export default function Hero() {
             </h1>
 
             {/* 2 — COMPANY NAME */}
-            <div className="anim-fade-up delay-75" style={{ marginBottom: 16 }}>
+            <div className="anim-fade-up delay-75" style={{ marginBottom: 8 }}>
               <span style={{
                 display: "inline-block",
                 fontFamily: "'Plus Jakarta Sans',sans-serif",
@@ -106,8 +106,24 @@ export default function Hero() {
               </span>
             </div>
 
+            {/* 2b — TAGLINE directly under company name */}
+            <div className="anim-fade-up delay-100" style={{ marginBottom: 16 }}>
+              <span style={{
+                display: "inline-block",
+                fontFamily: "'Cormorant Garamond',serif",
+                fontWeight: 600,
+                fontStyle: "italic",
+                fontSize: "clamp(1rem,2vw,1.35rem)",
+                color: "rgba(255,255,255,0.90)",
+                letterSpacing: "0.02em",
+                lineHeight: 1.4,
+              }}>
+                A Voice for the Voiceless
+              </span>
+            </div>
+
             {/* 3 — SERVICE AREA */}
-            <div className="anim-fade-up delay-100" style={{ marginBottom: 22 }}>
+            <div className="anim-fade-up delay-125" style={{ marginBottom: 22 }}>
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(13,148,136,0.18)",
@@ -123,17 +139,6 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* 4 — SHORT TAGLINE */}
-            <p className="anim-fade-up delay-150" style={{
-              fontFamily: "'Plus Jakarta Sans',sans-serif",
-              fontSize: "clamp(0.9rem,1.5vw,1rem)",
-              color: "rgba(255,255,255,0.68)",
-              lineHeight: 1.6,
-              marginBottom: 32,
-              maxWidth: 440,
-            }}>
-              A voice for the voiceless.
-            </p>
 
             {/* CTA */}
             <div className="anim-fade-up delay-200" style={{ marginBottom: 32 }}>

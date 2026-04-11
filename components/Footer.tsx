@@ -4,7 +4,29 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer style={{ background: "linear-gradient(180deg,#061428,#0B2545)", color: "white" }}>
+    <>
+      <style>{`
+        @media (max-width: 640px) {
+          .footer-brand {
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .footer-brand-header {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .footer-brand p {
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .footer-brand > div:first-child {
+            justify-content: center !important;
+          }
+        }
+      `}</style>
+      <footer style={{ background: "linear-gradient(180deg,#061428,#0B2545)", color: "white" }}>
       {/* Top wave */}
       <div style={{ lineHeight: 0 }}>
         <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style={{ width: "100%", height: 50, display: "block" }}>
@@ -18,7 +40,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             {/* Logo — white card so it always shows regardless of logo design */}
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }} className="footer-brand-header">
               <div style={{
                 background: "white",
                 borderRadius: 12,
@@ -31,12 +53,12 @@ export default function Footer() {
                 <img
                   src="/logo.png"
                   alt="Othdabere Healthcare logo"
-                  style={{ height: 36, width: "auto", objectFit: "contain", display: "block" }}
+                  style={{ height: 72, width: "auto", objectFit: "contain", display: "block" }}
                 />
               </div>
               <div>
-                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem" }}>Othdabere High Quality</div>
-                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem", color: "white" }}>Healthcare Services Ltd</div>
+                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem", textTransform: "uppercase" }}>OTHDABERE HIGH QUALITY</div>
+                <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 800, fontSize: "0.92rem", color: "white", textTransform: "uppercase" }}>HEALTHCARE SERVICES LTD</div>
               </div>
             </div>
 
@@ -181,5 +203,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   )
 }
