@@ -1,35 +1,16 @@
-import type { Metadata, Viewport } from "next";
-import AdminPWAInstall from "@/components/admin/AdminPWAInstall";
-import "@/app/globals.css";
-
-export const viewport: Viewport = {
-  themeColor: "#0B2545",
-  width: "device-width",
-  initialScale: 1,
-};
+import type { Metadata } from "next"
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "OHQHS Admin Dashboard",
-  description: "Admin management dashboard for Othdabere High Quality Healthcare Services.",
-  manifest: "/admin-manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "black-translucent",
-    title: "OHQHS Admin",
-  },
-  icons: {
-    icon: [{ url: "/icons/admin-icon-192.png", sizes: "192x192", type: "image/png" }],
-    apple: [{ url: "/icons/admin-icon-180.png", sizes: "180x180", type: "image/png" }],
-    shortcut: "/icons/admin-icon-192.png",
-  },
-  robots: { index: false, follow: false },
-};
+  title: "Othdabere H.Q. Healthcare Services Ltd | Professional Domiciliary Care",
+  description: "Professional domiciliary care services across the UK and Ghana. Compassionate, personalised home care delivered by trained professionals.",
+  icons: { icon: "/logo.png" },
+}
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      {children}
-      <AdminPWAInstall />
-    </>
-  );
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
 }
