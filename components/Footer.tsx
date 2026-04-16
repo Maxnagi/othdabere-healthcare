@@ -24,6 +24,18 @@ export default function Footer() {
           .footer-brand > div:first-child {
             justify-content: center !important;
           }
+          .footer-contact {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .footer-contact-item {
+            justify-content: center !important;
+          }
+          .footer-contact-cta {
+            align-self: center !important;
+          }
         }
       `}</style>
       <footer style={{ background: "linear-gradient(180deg,#061428,#0B2545)", color: "white" }}>
@@ -132,15 +144,15 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="footer-contact">
             <h4 style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: 18 }}>Contact</h4>
             {[
               { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>, val: "+44 7588 160799", href: "tel:+447588160799", color: "#2DD4BF" },
               { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>, val: "othdaberehealthcare@gmail.com", href: "mailto:othdaberehealthcare@gmail.com", color: "#2DD4BF" },
-              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>, val: "United Kingdom & Ghana", href: "#", color: "rgba(255,255,255,0.60)" },
+              { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>, val: "London, United Kingdom", href: "#", color: "rgba(255,255,255,0.60)" },
               { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#2DD4BF" strokeWidth="1.8"/><path d="M12 6v6l4 2" stroke="#2DD4BF" strokeWidth="1.8" strokeLinecap="round"/></svg>, val: "Mon – Sun, 8am – 8pm", href: "#", color: "rgba(255,255,255,0.60)" },
             ].map((c, i) => (
-              <a key={i} href={c.href} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.84rem", color: c.color, textDecoration: "none", marginBottom: 14, transition: "color 0.2s", lineHeight: 1.4 }}
+              <a key={i} href={c.href} className="footer-contact-item" style={{ display: "flex", gap: 10, alignItems: "flex-start", fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: "0.84rem", color: c.color, textDecoration: "none", marginBottom: 14, transition: "color 0.2s", lineHeight: 1.4 }}
                 onMouseEnter={e => e.currentTarget.style.color="white"}
                 onMouseLeave={e => e.currentTarget.style.color=c.color}
               >
@@ -148,7 +160,7 @@ export default function Footer() {
               </a>
             ))}
 
-            <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 8, background: "linear-gradient(135deg,#0D9488,#0891B2)", color: "white", padding: "11px 22px", borderRadius: 50, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: "0.85rem", textDecoration: "none", transition: "transform 0.2s, box-shadow 0.2s", boxShadow: "0 4px 16px rgba(13,148,136,0.35)" }}
+            <a href="/contact" className="footer-contact-cta" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 8, background: "linear-gradient(135deg,#0D9488,#0891B2)", color: "white", padding: "11px 22px", borderRadius: 50, fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 600, fontSize: "0.85rem", textDecoration: "none", transition: "transform 0.2s, box-shadow 0.2s", boxShadow: "0 4px 16px rgba(13,148,136,0.35)" }}
               onMouseEnter={e => { e.currentTarget.style.transform="translateY(-2px)"; e.currentTarget.style.boxShadow="0 8px 24px rgba(13,148,136,0.5)" }}
               onMouseLeave={e => { e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="0 4px 16px rgba(13,148,136,0.35)" }}
             >
