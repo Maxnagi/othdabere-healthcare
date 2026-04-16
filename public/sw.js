@@ -1,16 +1,15 @@
 /* =====================================================
-   OHQHS Main Service Worker  v1.0
+   OHQHS Main Service Worker  v2.0
    Scope: /   (admin is handled by admin-sw.js)
+
+   STRATEGY:
+   - HTML pages   → Network-first (always fresh, cache only for offline)
+   - Static assets → Stale-while-revalidate (fast, background refresh)
    ===================================================== */
 
-const CACHE = "ohqhs-v1";
+const CACHE = "ohqhs-v2"; // ← bump this on every deploy to bust stale caches
 
 const PRECACHE = [
-  "/",
-  "/about",
-  "/services",
-  "/contact",
-  "/domiciliary-care",
   "/offline.html",
 ];
 
@@ -18,18 +17,20 @@ const PRECACHE = [
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE).then((c) =>
-      c.addAll(PRECACHE).catch(() => {}) // non-fatal if some fail
+      c.addAll(PRECACHE).catch(() => {})
     )
   );
   self.skipWaiting();
 });
 
-// ── Activate — clean old caches ─────────────────────
+// ── Activate — wipe ALL old ohqhs caches ────────────
 self.addEventListener("activate", (e) => {
   e.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.filter((k) => k !== CACHE && k.startsWith("ohqhs-")).map((k) => caches.delete(k))
+        keys
+          .filter((k) => k.startsWith("ohqhs-") && k !== CACHE)
+          .map((k) => caches.delete(k))
       )
     )
   );
@@ -47,7 +48,29 @@ self.addEventListener("fetch", (e) => {
   // Network-only for API routes
   if (url.pathname.startsWith("/api/")) return;
 
-  // Stale-while-revalidate for everything else
+  // ── HTML navigation → Network-first ─────────────
+  // Always fetch fresh HTML from the server.
+  // Only fall back to offline page if the network fails.
+  if (e.request.mode === "navigate") {
+    e.respondWith(
+      fetch(e.request)
+        .then((res) => {
+          if (res && res.status === 200) {
+            const clone = res.clone();
+            caches.open(CACHE).then((c) => c.put(e.request, clone));
+          }
+          return res;
+        })
+        .catch(() =>
+          caches.match(e.request).then(
+            (cached) => cached || caches.match("/offline.html")
+          )
+        )
+    );
+    return;
+  }
+
+  // ── Static assets (JS, CSS, images) → Stale-while-revalidate ──
   e.respondWith(
     caches.open(CACHE).then((cache) =>
       cache.match(e.request).then((cached) => {
@@ -56,11 +79,7 @@ self.addEventListener("fetch", (e) => {
             if (res && res.status === 200) cache.put(e.request, res.clone());
             return res;
           })
-          .catch(() =>
-            e.request.mode === "navigate"
-              ? cache.match("/offline.html")
-              : undefined
-          );
+          .catch(() => undefined);
         return cached || network;
       })
     )
